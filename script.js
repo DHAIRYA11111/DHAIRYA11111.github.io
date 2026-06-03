@@ -6,22 +6,26 @@ const hero = document.querySelector(".hero");
 const heroCanvas = document.querySelector("[data-hero-canvas]");
 
 const setHeaderState = () => {
+  if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 10);
 };
 
-navToggle.addEventListener("click", () => {
-  const isOpen = header.classList.toggle("nav-open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-});
+if (navToggle && header) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
+    if (!header || !navToggle) return;
     header.classList.remove("nav-open");
     navToggle.setAttribute("aria-expanded", "false");
   });
 });
 
-year.textContent = new Date().getFullYear();
+if (year) year.textContent = new Date().getFullYear();
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
 
@@ -54,9 +58,9 @@ const initHeroScene = async () => {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const palette = [
-      new THREE.Color("#6ee7d8"),
-      new THREE.Color("#dc704b"),
-      new THREE.Color("#d5a53f"),
+      new THREE.Color("#a8f7ff"),
+      new THREE.Color("#7046ff"),
+      new THREE.Color("#baf86c"),
       new THREE.Color("#ffffff"),
     ];
 
@@ -110,15 +114,15 @@ const initHeroScene = async () => {
     };
 
     const panels = [
-      makePanel(3.4, 1.55, -1.2, 2.1, 1.0, "#6ee7d8"),
-      makePanel(2.4, -0.9, -0.6, 1.6, 0.72, "#d5a53f"),
-      makePanel(4.5, -0.02, -2.2, 2.0, 1.18, "#dc704b"),
+      makePanel(3.4, 1.55, -1.2, 2.1, 1.0, "#a8f7ff"),
+      makePanel(2.4, -0.9, -0.6, 1.6, 0.72, "#baf86c"),
+      makePanel(4.5, -0.02, -2.2, 2.0, 1.18, "#7046ff"),
       makePanel(0.8, 1.8, -3.2, 1.2, 0.76, "#ffffff"),
     ];
 
     const coreGeometry = new THREE.IcosahedronGeometry(0.7, 1);
     const coreMaterial = new THREE.MeshBasicMaterial({
-      color: "#6ee7d8",
+      color: "#a8f7ff",
       transparent: true,
       opacity: 0.28,
       wireframe: true,
@@ -130,7 +134,7 @@ const initHeroScene = async () => {
 
     const orbitGeometry = new THREE.TorusGeometry(1.15, 0.006, 8, 110);
     const orbitMaterial = new THREE.MeshBasicMaterial({
-      color: "#d5a53f",
+      color: "#baf86c",
       transparent: true,
       opacity: 0.65,
       blending: THREE.AdditiveBlending,
