@@ -1,14 +1,15 @@
 :root {
   color-scheme: light;
-  --bg: #f7f5ef;
+  --bg: #f4f7f3;
   --surface: #ffffff;
   --ink: #15171a;
   --muted: #62666d;
-  --line: #d9d4c8;
+  --line: #d5ded6;
   --accent: #106b64;
   --accent-strong: #063f3b;
   --coral: #dc704b;
   --gold: #d5a53f;
+  --electric: #6ee7d8;
   --shadow: 0 24px 70px rgba(27, 29, 31, 0.14);
   --max: 1120px;
 }
@@ -23,7 +24,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    linear-gradient(90deg, rgba(16, 107, 100, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(220, 112, 75, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, #f4f7f3 0%, #eef3ee 45%, #f6f4ec 100%);
+  background-size: 36px 36px, 36px 36px, auto;
   color: var(--ink);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
@@ -138,12 +143,46 @@ a {
 
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 96vh;
   overflow: hidden;
   display: grid;
   align-items: center;
   padding: 140px 24px 80px;
+  background: #050807;
   color: #ffffff;
+  isolation: isolate;
+}
+
+.hero::before,
+.hero::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.hero::before {
+  inset: auto -10% -26% -10%;
+  z-index: 3;
+  height: 58%;
+  background:
+    linear-gradient(rgba(110, 231, 216, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(213, 165, 63, 0.16) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000000 28%, #000000 82%, transparent 100%);
+  opacity: 0.42;
+  transform: perspective(960px) rotateX(64deg);
+  transform-origin: bottom;
+}
+
+.hero::after {
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(115deg, transparent 0%, transparent 42%, rgba(110, 231, 216, 0.2) 48%, transparent 56%, transparent 100%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 13px);
+  mix-blend-mode: screen;
+  opacity: 0.34;
+  animation: hero-sweep 8s ease-in-out infinite;
 }
 
 .hero-media,
@@ -158,30 +197,32 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: saturate(1.08) contrast(1.08) brightness(0.82);
+  transform: scale(1.04);
 }
 
 .hero-canvas {
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
   pointer-events: none;
   mix-blend-mode: screen;
+  opacity: 0.96;
 }
 
 .hero-overlay {
-  z-index: 2;
+  z-index: 1;
   background:
-    radial-gradient(circle at 72% 38%, rgba(220, 112, 75, 0.22), transparent 24%),
-    radial-gradient(circle at 58% 68%, rgba(213, 165, 63, 0.16), transparent 26%),
-    linear-gradient(90deg, rgba(8, 18, 19, 0.9) 0%, rgba(8, 18, 19, 0.66) 42%, rgba(8, 18, 19, 0.2) 100%),
-    linear-gradient(180deg, rgba(8, 18, 19, 0.18) 0%, rgba(8, 18, 19, 0.64) 100%);
+    linear-gradient(90deg, rgba(3, 7, 6, 0.94) 0%, rgba(4, 10, 10, 0.76) 36%, rgba(4, 10, 10, 0.26) 72%, rgba(4, 10, 10, 0.56) 100%),
+    linear-gradient(180deg, rgba(3, 7, 6, 0.22) 0%, rgba(3, 7, 6, 0.42) 64%, rgba(3, 7, 6, 0.88) 100%);
 }
 
 .hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   width: min(100%, var(--max));
   margin: 0 auto;
+  text-shadow: 0 18px 58px rgba(0, 0, 0, 0.46);
 }
 
 .eyebrow {
@@ -223,17 +264,30 @@ a {
   padding: 12px 18px;
   border-radius: 8px;
   font-weight: 800;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .button.primary {
   background: var(--coral);
   color: #ffffff;
+  box-shadow: 0 18px 42px rgba(220, 112, 75, 0.28);
 }
 
 .button.secondary {
   border: 1px solid rgba(255, 255, 255, 0.38);
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  border-color: rgba(110, 231, 216, 0.72);
+  box-shadow: 0 16px 38px rgba(110, 231, 216, 0.12);
 }
 
 .section {
@@ -306,7 +360,11 @@ a {
   width: 100%;
   max-width: none;
   padding: 88px max(20px, calc((100vw - var(--max)) / 2));
-  background: #ebe7dd;
+  background:
+    linear-gradient(90deg, rgba(16, 107, 100, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(213, 165, 63, 0.07) 1px, transparent 1px),
+    #e8efe9;
+  background-size: 40px 40px, 40px 40px, auto;
 }
 
 .experience-section {
@@ -403,6 +461,15 @@ a {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: 0 16px 42px rgba(32, 34, 36, 0.07);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.stack-item:hover,
+.project-card:hover,
+.experience-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(16, 107, 100, 0.26);
+  box-shadow: 0 24px 58px rgba(32, 34, 36, 0.1);
 }
 
 .stack-item {
@@ -592,14 +659,22 @@ a {
   }
 
   .hero {
-    min-height: 88vh;
+    min-height: 90vh;
     padding: 124px 18px 64px;
   }
 
   .hero-overlay {
     background:
-      linear-gradient(90deg, rgba(8, 18, 19, 0.9) 0%, rgba(8, 18, 19, 0.76) 60%, rgba(8, 18, 19, 0.3) 100%),
-      linear-gradient(180deg, rgba(8, 18, 19, 0.2) 0%, rgba(8, 18, 19, 0.68) 100%);
+      linear-gradient(90deg, rgba(3, 7, 6, 0.94) 0%, rgba(4, 10, 10, 0.82) 58%, rgba(4, 10, 10, 0.52) 100%),
+      linear-gradient(180deg, rgba(3, 7, 6, 0.2) 0%, rgba(3, 7, 6, 0.74) 100%);
+  }
+
+  .hero::before {
+    opacity: 0.26;
+  }
+
+  .hero::after {
+    opacity: 0.22;
   }
 
   .button {
@@ -636,5 +711,16 @@ a {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+}
+
+@keyframes hero-sweep {
+  0%,
+  100% {
+    background-position: -45vw 0, 0 0;
+  }
+
+  50% {
+    background-position: 45vw 0, 0 10px;
   }
 }
