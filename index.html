@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="MUJ RoboManipal is the robotics team of Manipal University Jaipur, building competition robots for RoboSoccer, autonomous challenges, combat-style arenas, and engineering showcases."
+      content="Dhairya Sansi portfolio showcasing computer vision, machine learning, robotics, experience, web projects, and technical skills."
     />
-    <title>MUJ RoboManipal | Robotics Team</title>
+    <title>Dhairya Sansi | Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header" data-header>
-      <a class="brand" href="#home" aria-label="MUJ RoboManipal home">
-        <img src="assets/muj-robomanipal-logo.png" alt="" />
-        <span>MUJ RoboManipal</span>
+      <a class="brand" href="#home" aria-label="Go to home">
+        <span class="brand-mark">DS</span>
+        <span>Dhairya Sansi</span>
       </a>
 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -26,272 +26,349 @@
 
       <nav class="site-nav" id="site-nav">
         <a href="#about">About</a>
-        <a href="#what-we-do">What We Do</a>
-        <a href="#bots">Bots</a>
-        <a href="#wins">Wins</a>
-        <a href="#join">Join</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" id="home">
+        <img class="hero-media" src="assets/portfolio-hero.png" alt="" aria-hidden="true" />
         <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-shell">
-          <div class="hero-copy">
-            <p class="eyebrow">Manipal University Jaipur Robotics Team</p>
-            <h1>Building bots for the arena.</h1>
-            <p>
-              RoboManipal is MUJ's student robotics crew, designing fast, durable, competition-ready
-              machines for RoboSoccer, autonomous events, arena challenges, and national tech fests.
-            </p>
-            <div class="hero-actions">
-              <a class="button primary" href="#bots">Explore bots</a>
-              <a class="button secondary" href="#wins">See wins</a>
-            </div>
-          </div>
-
-          <div class="mission-panel">
-            <div class="logo-stage">
-              <img src="assets/muj-robomanipal-logo.png" alt="MUJ RoboManipal logo" />
-            </div>
-            <div class="signal-row">
-              <span>Drive</span>
-              <span>Control</span>
-              <span>Score</span>
-            </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Developer portfolio</p>
+          <h1>Dhairya Sansi</h1>
+          <p class="hero-copy">
+            I build practical AI, computer vision, robotics, and web projects that connect
+            software with real-world engineering problems.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View projects</a>
+            <a class="button secondary" href="#contact">Get in touch</a>
           </div>
         </div>
       </section>
 
-      <section class="section intro-section" id="about">
+      <section class="section about-section" id="about">
         <div class="section-heading">
-          <p class="eyebrow">Who we are</p>
-          <h2>A student team where mechanical grit meets code, circuits, and match-day pressure.</h2>
+          <p class="eyebrow">Who I am</p>
+          <h2>Developer and builder focused on AI, vision, and automation.</h2>
         </div>
-        <div class="intro-grid">
+        <div class="about-grid">
           <p>
-            Team RoboManipal is the official robotics team of Manipal University Jaipur,
-            established in 2017. We are a multidisciplinary team of 20 undergraduate robotics
-            enthusiasts who endeavour to achieve innovation through robotic technologies and spread
-            knowledge about its diverse applications. Our legacy is built on building, testing,
-            competing, researching, and learning together.
+            I enjoy creating systems that move beyond demos: models that inspect real objects,
+            robots that solve physical movement problems, and interfaces that make technical work
+            easier to use. My projects combine machine learning, electronics, real-time processing,
+            and clean web experiences.
           </p>
           <div class="stats">
-            <article>
-              <strong>2017</strong>
-              <span>Year established</span>
-            </article>
-            <article>
-              <strong>20</strong>
-              <span>Student members</span>
-            </article>
-            <article>
-              <strong>MUJ</strong>
-              <span>Manipal University Jaipur</span>
-            </article>
+            <div>
+              <strong>AI</strong>
+              <span>Computer vision</span>
+            </div>
+            <div>
+              <strong>15 kg</strong>
+              <span>Robot payload</span>
+            </div>
+            <div>
+              <strong>2-3s</strong>
+              <span>Inspection cycle</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section what-section" id="what-we-do">
+      <section class="section stack-section" id="stack">
         <div class="section-heading">
-          <p class="eyebrow">What we do</p>
-          <h2>Dream. Build. Achieve.</h2>
+          <p class="eyebrow">Personal tech stack</p>
+          <h2>Tools I use to design, build, and launch.</h2>
         </div>
-        <div class="statement-panel">
-          <p>
-            We strive to formulate effective solutions to complex problems with the help of
-            Robotics and its applications and compete in the toughest Robotics competitions in the
-            world. Our innovation starts with a DREAM to elucidate problems as we BUILD solutions to
-            ACHIEVE the limitless.
-          </p>
+        <div class="stack-grid" aria-label="Technology stack">
+          <article class="stack-item">
+            <span>Computer Vision</span>
+            <h3>Python, OpenCV, YOLO</h3>
+            <p>Real-time video processing, defect detection, segmentation, and model inference.</p>
+          </article>
+          <article class="stack-item">
+            <span>Machine Learning</span>
+            <h3>Ultralytics YOLO</h3>
+            <p>Custom-trained object detection workflows for industrial inspection problems.</p>
+          </article>
+          <article class="stack-item">
+            <span>Backend</span>
+            <h3>Flask, FastAPI, APIs</h3>
+            <p>Inference servers, API endpoints, and software layers around AI systems.</p>
+          </article>
+          <article class="stack-item">
+            <span>Robotics</span>
+            <h3>Arduino Mega, Sensors</h3>
+            <p>Line following robots, industrial-grade sensors, IR obstacle detection, and payload design.</p>
+          </article>
+          <article class="stack-item">
+            <span>Frontend</span>
+            <h3>HTML, CSS, JavaScript</h3>
+            <p>Responsive interfaces for presenting projects, tools, and technical workflows.</p>
+          </article>
+          <article class="stack-item">
+            <span>Workflow</span>
+            <h3>Git, GitHub, VS Code</h3>
+            <p>Version control, collaboration, deployment habits, and clean development flow.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section bots-section" id="bots">
+      <section class="section experience-section" id="experience">
         <div class="section-heading">
-          <p class="eyebrow">Bot garage</p>
-          <h2>Machines made for speed, control, impact, and quick repairs.</h2>
+          <p class="eyebrow">Experience</p>
+          <h2>Teams, internships, and organizing roles.</h2>
         </div>
-        <div class="bot-grid">
-          <article class="bot-card featured">
-            <div class="bot-visual soccer-bot" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+        <div class="experience-list">
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span>Apr 2025 - May 2025</span>
+              <strong>East Delhi &middot; On-site</strong>
             </div>
-            <div>
-              <p class="tag">RoboSoccer</p>
-              <h3>Striker Unit</h3>
+            <div class="experience-content">
+              <h3>IoT Intern</h3>
+              <p class="experience-org">ABILITIES INDIA PISTONS AND RINGS LIMITED &middot; Internship</p>
               <p>
-                A compact attacking robot tuned for ball control, acceleration, quick turning, and
-                direct shots inside RoboSoccer arenas.
+                Developed a heavy-duty line-following robot capable of carrying 10-20 kg payloads
+                and created a machine learning model to detect defects and cracks on piston
+                surfaces using camera and sensor technology.
               </p>
               <ul>
-                <li>High torque drive</li>
-                <li>Fast direction changes</li>
-                <li>Kick mechanism</li>
+                <li>Artificial Intelligence</li>
+                <li>Python</li>
+                <li>Arduino IDE</li>
+                <li>Machine Learning</li>
               </ul>
             </div>
           </article>
 
-          <article class="bot-card">
-            <div class="bot-visual vision-bot" aria-hidden="true">
-              <span></span>
-              <span></span>
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span>Nov 2025 - Apr 2026</span>
+              <strong>On-site</strong>
             </div>
-            <div>
-              <p class="tag">Autonomous</p>
-              <h3>Navigator Bot</h3>
+            <div class="experience-content">
+              <h3>Junior Committee Member</h3>
+              <p class="experience-org">MUJ ACM SIGBED Student Chapter</p>
               <p>
-                Built for line tracking, sensor fusion, path correction, and stable motion through
-                rule-based autonomous courses.
+                Member of the Projects and Research Committee and the Web Development Committee,
+                contributing to collaborative technical work and student chapter initiatives.
               </p>
               <ul>
-                <li>Sensor array</li>
-                <li>Closed-loop control</li>
-                <li>Course mapping</li>
+                <li>Projects and Research</li>
+                <li>Web Development</li>
+                <li>Collaborative Problem Solving</li>
               </ul>
             </div>
           </article>
 
-          <article class="bot-card">
-            <div class="bot-visual arena-bot" aria-hidden="true">
-              <span></span>
-              <span></span>
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span>Mar 2026</span>
+              <strong>On-site</strong>
             </div>
-            <div>
-              <p class="tag">Arena</p>
-              <h3>Defender Chassis</h3>
+            <div class="experience-content">
+              <h3>Organizing Committee Member</h3>
+              <p class="experience-org">MUJ Oneiros</p>
               <p>
-                A tough platform for defense, blocking, pushing, and rapid component swaps during
-                multi-round competitions.
+                Collaborated with the senior working team on logistics for a three-day event,
+                coordinated production and operations, and helped manage event execution for
+                attendees.
               </p>
               <ul>
-                <li>Reinforced frame</li>
-                <li>Serviceable modules</li>
-                <li>Match-ready wiring</li>
+                <li>Production Management</li>
+                <li>Operations Management</li>
+                <li>Logistics Management</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span>Jan 2026</span>
+              <strong>Event operations</strong>
+            </div>
+            <div class="experience-content">
+              <h3>Organizing Committee Member</h3>
+              <p class="experience-org">TechIdeate MUJ</p>
+              <p>
+                Supported event planning and coordination through collaborative problem solving,
+                operations management, and logistics work.
+              </p>
+              <ul>
+                <li>Collaborative Problem Solving</li>
+                <li>Operations Management</li>
+                <li>Logistics Management</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span>Robotics team</span>
+              <strong>Junior role</strong>
+            </div>
+            <div class="experience-content">
+              <h3>Junior Working Team Member</h3>
+              <p class="experience-org">Team RoboManipal</p>
+              <p>
+                Worked as a junior team member in a robotics-focused environment, contributing
+                through team coordination, technical curiosity, and collaborative problem solving.
+              </p>
+              <ul>
+                <li>Robotics</li>
+                <li>Team Collaboration</li>
+                <li>Collaborative Problem Solving</li>
               </ul>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section wins-section" id="wins">
+      <section class="section projects-section" id="projects">
         <div class="section-heading">
-          <p class="eyebrow">Wins and runs</p>
-          <h2>Replace these placeholders with your actual trophies, podiums, and finalist runs.</h2>
+          <p class="eyebrow">Portfolio</p>
+          <h2>Featured projects in AI inspection, robotics, and web development.</h2>
         </div>
-        <div class="wins-layout">
-          <article class="scoreboard">
-            <span class="scoreboard-label">Season board</span>
-            <strong>Wins</strong>
-            <div class="scoreline">
-              <span>Podiums</span>
-              <b>08</b>
+        <div class="featured-project-grid">
+          <article class="project-card project-card-featured">
+            <div class="project-topline">
+              <span>Computer vision</span>
+              <span class="project-status">Featured</span>
             </div>
-            <div class="scoreline">
-              <span>Finalist runs</span>
-              <b>12</b>
-            </div>
-            <div class="scoreline">
-              <span>Competitions</span>
-              <b>20+</b>
-            </div>
+            <h3>Cracks and Debris Detection Model</h3>
+            <p>
+              Built an end-to-end real-time industrial inspection system for detecting surface
+              defects in metal pistons. The setup uses high-grade external cameras to capture live
+              video while the piston rotates automatically for 2-3 seconds, giving the model full
+              surface coverage.
+            </p>
+            <p>
+              A custom-trained YOLO detection and segmentation model analyzes each frame to find
+              defects such as cracks, discoloration, chips, bruises, and water stains, then
+              classifies the piston as "Approved" or "Not OK" for a quality-control workflow.
+            </p>
+            <ul>
+              <li>Python</li>
+              <li>OpenCV</li>
+              <li>Ultralytics YOLO</li>
+              <li>Real-time video</li>
+              <li>Flask/FastAPI</li>
+              <li>High-grade cameras</li>
+            </ul>
           </article>
 
-          <div class="timeline">
-            <article>
-              <span>2026</span>
-              <h3>RoboSoccer Championship Run</h3>
-              <p>Reached the knockout stage with a redesigned striker and faster service workflow.</p>
-            </article>
-            <article>
-              <span>2025</span>
-              <h3>Tech Fest Podium Finish</h3>
-              <p>Secured a podium in a robotics arena event after back-to-back elimination matches.</p>
-            </article>
-            <article>
-              <span>2024</span>
-              <h3>Best Mechanical Design</h3>
-              <p>Recognized for chassis packaging, repair access, and reliable drive construction.</p>
-            </article>
-            <article>
-              <span>2023</span>
-              <h3>Autonomous Challenge Finalist</h3>
-              <p>Built a stable autonomous bot for tracking, obstacle response, and timed navigation.</p>
-            </article>
-          </div>
+          <article class="project-card project-card-featured">
+            <div class="project-topline">
+              <span>Robotics</span>
+              <span class="project-status">Featured</span>
+            </div>
+            <h3>Heavy-Duty Line Following Robot</h3>
+            <p>
+              Made a heavy-duty line following robot associated with Abilities India Pistons and
+              Rings Limited. The robot uses an Arduino Mega and can carry payloads up to 15 kg,
+              making it suitable for heavier movement tasks.
+            </p>
+            <p>
+              The build uses industrial-grade sensors for wide-view line detection and IR sensors
+              for obstacle detection, combining electronics, control logic, and mechanical design
+              into one working automation project.
+            </p>
+            <ul>
+              <li>Arduino Mega</li>
+              <li>Industrial sensors</li>
+              <li>IR obstacle detection</li>
+              <li>15 kg payload</li>
+              <li>Electronics</li>
+              <li>Automation</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="project-subhead">
+          <p class="eyebrow">More work</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-topline">
+              <span>AI app</span>
+              <span class="project-status">Concept</span>
+            </div>
+            <h3>AI Image Generator</h3>
+            <p>
+              A creative tool concept for generating images from prompts, refining styles, and
+              turning quick ideas into usable visual assets.
+            </p>
+            <ul>
+              <li>Prompt interface</li>
+              <li>Image workflow</li>
+              <li>Creative controls</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>Web app</span>
+              <span class="project-status">Prototype</span>
+            </div>
+            <h3>Personal Dashboard</h3>
+            <p>
+              A clean productivity dashboard for tasks, notes, quick links, and day planning with
+              a focused, minimal interface.
+            </p>
+            <ul>
+              <li>Responsive UI</li>
+              <li>Reusable components</li>
+              <li>Local state</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span>Portfolio</span>
+              <span class="project-status">Live</span>
+            </div>
+            <h3>Developer Portfolio</h3>
+            <p>
+              This site: a fast, editable portfolio that presents identity, stack, projects, and
+              contact paths in one polished experience.
+            </p>
+            <ul>
+              <li>Static website</li>
+              <li>Mobile navigation</li>
+              <li>Accessible sections</li>
+            </ul>
+          </article>
         </div>
       </section>
 
-      <section class="section arena-section" id="arena">
-        <div class="arena-copy">
-          <p class="eyebrow">How we build</p>
-          <h2>Design. Fabricate. Wire. Code. Break. Tune. Repeat.</h2>
-          <p>
-            The team works like a small engineering pit crew: CAD and fabrication on one side,
-            embedded code and controls on another, with testing tying it all together.
-          </p>
-        </div>
-        <div class="discipline-grid">
-          <article>
-            <span>01</span>
-            <h3>Mechanical</h3>
-            <p>Chassis, mounts, drivetrain layouts, repair access, and impact tolerance.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Electronics</h3>
-            <p>Power systems, motor drivers, sensors, wiring discipline, and diagnostics.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Software</h3>
-            <p>Control loops, embedded logic, computer vision, telemetry, and strategy tools.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Operations</h3>
-            <p>Match planning, documentation, spare parts, pit workflow, and competition logistics.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section join-section" id="join">
+      <section class="section contact-section" id="contact">
         <div>
-          <p class="eyebrow">Join the pit</p>
-          <h2>Who can join?</h2>
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something useful.</h2>
           <p>
-            Anyone from Manipal University Jaipur who has expertise in any domain of robotics can
-            contact the team. Mechanical design, electronics, embedded systems, coding, AI, control,
-            fabrication, documentation, and operations all have a place here.
-          </p>
-        </div>
-        <a class="button primary" href="#contact">Contact team</a>
-      </section>
-
-      <section class="contact-page" id="contact">
-        <div>
-          <p class="eyebrow">Contact us</p>
-          <h2>Ready to build, collaborate, or invite us to compete?</h2>
-          <p>
-            Reach out to Team RoboManipal for recruitment, sponsorship, robotics collaborations,
-            workshops, or competition communication.
+            Reach out for AI, robotics, automation, web development, or collaboration
+            opportunities.
           </p>
         </div>
         <div class="contact-links">
-          <a href="mailto:robomanipal@muj.manipal.edu">Email team</a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="#home">MUJ RoboManipal</a>
+          <a href="mailto:sansidhairya11@gmail.com">Email</a>
+          <a href="https://github.com/DHAIRYA11111" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/dhairya-s-31777b242/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="assets/dhairya-resume.pdf" target="_blank" rel="noreferrer" aria-label="Open resume">Resume</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>&copy; <span data-year></span> MUJ RoboManipal</span>
+      <span>&copy; <span data-year></span> Dhairya Sansi</span>
       <a href="#home">Back to top</a>
     </footer>
 
