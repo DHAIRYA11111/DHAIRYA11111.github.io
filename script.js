@@ -10,11 +10,33 @@
   setInterval(tick, 30000);
 
   const button = document.querySelector('#pause-scene');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const hero = document.querySelector('.city-hero');
+  const mast = document.querySelector('.mast');
+  let motionPaused = false;
+  let paintFrame = 0;
+  function updateScroll() {
+    paintFrame = 0;
+    const top = Math.max(0,window.scrollY);
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    const progress = distance > 0 ? Math.min(top / distance, 1) : 0;
+    mast.style.setProperty('--journey-progress',progress.toFixed(4));
+    if (top < hero.offsetHeight + 100 && !reduced.matches && !motionPaused) {
+      hero.style.setProperty('--sky-drift',Math.min(top * .04, 12) + 'px');
+    }
+  }
+  function queueScroll() {
+    if (!paintFrame) paintFrame = requestAnimationFrame(updateScroll);
+  }
+  addEventListener('scroll',queueScroll,{passive:true});
+  addEventListener('resize',queueScroll,{passive:true});
+  updateScroll();
   if (window.portfolioScene) {
-    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const preference = reduced;
     let paused = false;
     function updateScene() {
-      window.portfolioScene.setPaused(paused || preference.matches);
+      motionPaused = paused || preference.matches;
+      window.portfolioScene.setPaused(motionPaused);
       button.hidden = preference.matches;
       button.firstElementChild.textContent = paused ? '▷' : 'Ⅱ';
       button.setAttribute('aria-label', paused ? 'Play city animation' : 'Pause city animation');
@@ -53,5 +75,17 @@
       }
     }, {rootMargin:'-10% 0px -65% 0px'});
     sections.forEach(section => observer.observe(section));
+
+    const arrival = new IntersectionObserver(entries => {
+      for (const {target,isIntersecting} of entries) {
+        if (!isIntersecting) continue;
+        arrival.unobserve(target);
+        if (!reduced.matches && !motionPaused && target.animate) {
+          target.animate([{opacity:.65,transform:'translateY(12px)'},{opacity:1,transform:'none'}],
+            {duration:550,easing:'cubic-bezier(.18,.7,.25,1)'});
+        }
+      }
+    },{threshold:.35});
+    document.querySelectorAll('main section:not(#home) h2').forEach(title => arrival.observe(title));
   }
 })();
