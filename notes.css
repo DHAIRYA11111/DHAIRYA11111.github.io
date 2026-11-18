@@ -39,3 +39,22 @@
 }
 .fn-record[data-passing] .fn-station{background:var(--fn-red);box-shadow:0 0 0 4px #c0362717}
 @media(prefers-reduced-motion:no-preference){.fn-record[data-passing] .fn-station{transition:background .3s,box-shadow .3s}}
+
+.field-notes .fn-skills header h3{font-size:clamp(5rem,10vw,10rem)}
+.fn-skills .skill-deck{gap:clamp(14px,2vw,28px);align-items:stretch}
+.fn-skills .skill-deck>div{min-width:0;padding:clamp(20px,2.8vw,42px);border:1px solid #afa58d;border-top:4px solid #494a3b;background:#fcf7e8}
+.fn-skills .skill-deck dt{display:flex;align-items:center;gap:.45em;font:700 clamp(2rem,3.3vw,3.6rem)/1 "Barlow Condensed",sans-serif;margin:0 0 16px}
+.fn-skills .skill-deck .board-skill{background:#173739;color:#fff0d0;border:1px solid #284d49;border-top:5px solid #82baa6;box-shadow:4px 4px 0 #b8ae94}
+.fn-skills .skill-deck .board-skill:nth-child(2){background:#25382d;border-top-color:#ddae78}
+.fn-skills .board-skill dt{color:#ffeed4;font-size:clamp(2.7rem,4.7vw,5.3rem)}
+.fn-skills .board-skill dd{color:#f0e5d1;max-width:none}
+.board-skill dd p{margin:1rem 0 0}
+.board-skill figure{margin:0;border-block:1px solid #b8be9b60}
+.board-skill figcaption{font:600 .78rem var(--mono);color:#e1cfa4;padding:.35rem 0 .7rem}
+.skill-board{display:block;width:100%;height:auto}
+.board-skill dt .skill-mark{width:clamp(43px,4vw,61px);height:auto;aspect-ratio:1;object-fit:contain;padding:5px;background:#fff4dc;border-radius:7px}
+.skill-symbol{width:1em;height:1em;flex:none;color:#98503a}
+.skill-tools{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin:1rem 0 0}
+.skill-tools li{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #b4ad98;border-radius:3px;font:600 .85rem/1.4 var(--mono);color:#222e2d}
+.skill-tools .skill-mark{width:22px;height:22px;object-fit:contain}
+@media(max-width:420px){.fn-skills .board-skill{padding:16px}.skill-board{width:calc(100% + 24px);max-width:none;margin-inline:-12px}}

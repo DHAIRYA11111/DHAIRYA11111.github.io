@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 254"><title>Raspberry Pi 4 Model B component diagram</title>
+<defs><pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#ede4c1" stroke-opacity=".12" stroke-width=".8"/></pattern></defs><rect width="480" height="254" fill="url(#grid)"/>
+<rect x="117" y="54" width="240" height="150" rx="10" fill="#538b58"/>
+<circle cx="127" cy="65" r="7" fill="#d8b773"/><circle cx="127" cy="65" r="3.9" fill="#18292a"/>
+<circle cx="289" cy="65" r="7" fill="#d8b773"/><circle cx="289" cy="65" r="3.9" fill="#18292a"/>
+<circle cx="127" cy="193" r="7" fill="#d8b773"/><circle cx="127" cy="193" r="3.9" fill="#18292a"/>
+<circle cx="289" cy="193" r="7" fill="#d8b773"/><circle cx="289" cy="193" r="3.9" fill="#18292a"/>
+<rect x="140" y="59" width="136" height="16" rx="2" fill="#223a30"/>
+<circle cx="144.0" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="144.0" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="150.6" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="150.6" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="157.2" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="157.2" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="163.8" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="163.8" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="170.4" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="170.4" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="177.0" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="177.0" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="183.6" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="183.6" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="190.2" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="190.2" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="196.8" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="196.8" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="203.4" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="203.4" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="210.0" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="210.0" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="216.6" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="216.6" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="223.2" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="223.2" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="229.8" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="229.8" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="236.39999999999998" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="236.39999999999998" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="243.0" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="243.0" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="249.6" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="249.6" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="256.2" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="256.2" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="262.8" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="262.8" cy="70" r="1.8" fill="#e9ca8b"/>
+<circle cx="269.4" cy="64" r="1.8" fill="#e9ca8b"/>
+<circle cx="269.4" cy="70" r="1.8" fill="#e9ca8b"/>
+<rect x="167" y="97" width="49" height="48" rx="4" fill="#b3b7a4"/>
+<rect x="171" y="101" width="41" height="40" rx="2" fill="#a3a79a"/>
+<text x="191" y="124" text-anchor="middle" fill="#33423b" font-family="monospace" font-size="11">SoC</text>
+<rect x="227" y="101" width="29" height="41" rx="2" fill="#233d32"/>
+<rect x="137" y="179" width="33" height="26" rx="2" fill="#b5baa9"/>
+<rect x="142" y="196" width="23" height="7" rx="2" fill="#43594b"/>
+<rect x="184" y="184" width="21" height="21" rx="2" fill="#cac9ae"/>
+<rect x="215" y="184" width="21" height="21" rx="2" fill="#cac9ae"/>
+<rect x="250" y="149" width="8" height="36" rx="2" fill="#d7cba5"/>
+<rect x="150" y="144" width="38" height="6" rx="2" fill="#ecdcaf"/>
+<rect x="316" y="76" width="45" height="33" rx="2" fill="#bdc2af"/>
+<rect x="353" y="78" width="9" height="29" rx="2" fill="#76877c"/>
+<rect x="320" y="80" width="24" height="2" rx="2" fill="#ebead5"/>
+<rect x="316" y="119" width="45" height="33" rx="2" fill="#bdc2af"/>
+<rect x="353" y="121" width="9" height="29" rx="2" fill="#76877c"/>
+<rect x="320" y="123" width="24" height="2" rx="2" fill="#ebead5"/>
+<rect x="316" y="161" width="45" height="33" rx="2" fill="#bdc2af"/>
+<rect x="353" y="163" width="9" height="29" rx="2" fill="#76877c"/>
+<rect x="320" y="165" width="24" height="2" rx="2" fill="#ebead5"/>
+<path d="M227 65V35l13-13h20" fill="none" stroke="#f6d591" stroke-width="1.3"/>
+<text x="264" y="26" text-anchor="start" fill="#f3dfb2" font-family="monospace" font-size="13">40-pin GPIO</text>
+<path d="M167 118h-44L90 95H37" fill="none" stroke="#f6d591" stroke-width="1.3"/>
+<text x="27" y="88" text-anchor="start" fill="#f3dfb2" font-family="monospace" font-size="13">Processor</text>
+<path d="M359 90h16l12-16h26" fill="none" stroke="#f6d591" stroke-width="1.3"/>
+<text x="388" y="68" text-anchor="start" fill="#f3dfb2" font-family="monospace" font-size="13">USB</text>
+<path d="M153 204v13l-14 12h-20" fill="none" stroke="#f6d591" stroke-width="1.3"/>
+<text x="54" y="233" text-anchor="start" fill="#f3dfb2" font-family="monospace" font-size="13">USB-C</text>
+<path d="M223 203v11l16 17h15" fill="none" stroke="#f6d591" stroke-width="1.3"/>
+<text x="259" y="235" text-anchor="start" fill="#f3dfb2" font-family="monospace" font-size="13">Micro HDMI</text>
+</svg>

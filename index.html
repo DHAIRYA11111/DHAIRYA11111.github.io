@@ -24,7 +24,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="night-line.css?v=b958fc2f73">
 <link rel="stylesheet" href="work.css?v=cde26b7839">
 <link rel="stylesheet" href="lab.css?v=40492061e1">
-<link rel="stylesheet" href="notes.css?v=fa6aca07fd">
+<link rel="stylesheet" href="notes.css?v=f3e60eeb92">
 <link rel="stylesheet" href="motion.css?v=03febc748c">
 <script defer src="sound.js?v=d947ae7d60"></script>
 <script defer src="scene.js?v=2d259d8a30"></script>
@@ -160,11 +160,13 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
   </div>
     <section id="skills" class="fn-skills" aria-labelledby="fn-skill-heading">
       <header><p class="fn-kicker">On my workbench</p><h3 id="fn-skill-heading">Skills<span>.</span></h3></header>
-      <dl>
-        <div><dt>Embedded electronics</dt><dd>Raspberry Pi, Arduino, microcontrollers, circuit design, schematics, motor drivers and sensor integration.</dd></div>
-        <div><dt>Robotics &amp; IoT</dt><dd>Line following, robot control, RoboSoccer, drones, connected hardware and automation.</dd></div>
-        <div><dt>Computer vision</dt><dd>Python, OpenCV, YOLO, Roboflow, object detection and image-based defect inspection.</dd></div>
-        <div><dt>Web engineering</dt><dd>JavaScript, React, Node.js, MongoDB, FastAPI, HTML and CSS.</dd></div>
+      <dl class="skill-deck">
+        <div class="board-skill"><dt><img class="skill-mark" src="assets/skills/arduino.svg" width="40" height="40" loading="lazy" alt="">Arduino</dt><dd><figure><img class="skill-board" src="assets/skills/uno-r3-board.svg" width="480" height="254" loading="lazy" alt="Uno R3 diagram showing USB-B, the ATmega328P, digital I/O and analog inputs"><figcaption>Uno R3</figcaption></figure><p>Microcontrollers, sensor inputs and motor-driver circuits.</p></dd></div>
+        <div class="board-skill"><dt><img class="skill-mark" src="assets/skills/raspberrypi.svg" width="40" height="40" loading="lazy" alt="">Raspberry Pi</dt><dd><figure><img class="skill-board" src="assets/skills/pi-4-board.svg" width="480" height="254" loading="lazy" alt="Pi 4 Model B diagram showing the processor, USB ports, GPIO header and micro HDMI"><figcaption>Pi 4 Model B</figcaption></figure><p>I built and tested a Raspberry Pi line-following robot at Abilities India.</p></dd></div>
+        <div class="domain-skill"><dt><svg class="skill-symbol" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="3"/><path d="M18 5v7m6-7v7m6-7v7m-12 24v7m6-7v7m6-7v7M5 18h7m-7 6h7m-7 6h7m24-12h7m-7 6h7m-7 6h7"/></svg>Embedded electronics</dt><dd>Circuit design, schematics, sensor integration and Hall-effect sensing.</dd></div>
+        <div class="domain-skill"><dt><svg class="skill-symbol" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 39h32M13 36l7-13m5-5 9-8m3 2 4 4m-8-9 1-4"/><circle cx="18" cy="32" r="5"/><circle cx="22" cy="20" r="4"/><circle cx="35" cy="9" r="3"/></svg>Robotics &amp; IoT</dt><dd>Motor drivers, robot control, line following, RoboSoccer, drones and connected hardware.</dd></div>
+        <div class="domain-skill"><dt>Computer vision</dt><dd>Object detection and piston defect inspection with YOLO and Roboflow.<ul class="skill-tools"><li><img class="skill-mark" src="assets/skills/python.svg" width="40" height="40" loading="lazy" alt="">Python</li><li><img class="skill-mark" src="assets/skills/opencv.svg" width="40" height="40" loading="lazy" alt="">OpenCV</li></ul></dd></div>
+        <div class="domain-skill"><dt>Web engineering</dt><dd>Frontend interfaces, backend APIs and databases, with HTML and CSS.<ul class="skill-tools"><li><img class="skill-mark" src="assets/skills/javascript.svg" width="40" height="40" loading="lazy" alt="">JavaScript</li><li><img class="skill-mark" src="assets/skills/react.svg" width="40" height="40" loading="lazy" alt="">React</li><li><img class="skill-mark" src="assets/skills/nodejs.svg" width="40" height="40" loading="lazy" alt="">Node.js</li><li><img class="skill-mark" src="assets/skills/mongodb.svg" width="40" height="40" loading="lazy" alt="">MongoDB</li><li><img class="skill-mark" src="assets/skills/fastapi.svg" width="40" height="40" loading="lazy" alt="">FastAPI</li></ul></dd></div>
       </dl>
     </section>
   </div>
