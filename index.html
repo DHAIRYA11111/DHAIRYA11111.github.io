@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+// Always enter the portfolio at the skyline. Section links still work after entry.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dhairya Sansi — Engineering &amp; Web Portfolio</title>
 <meta name="description" content="Hi, I’m Dhairya Sansi, an ECE undergraduate at Manipal University Jaipur. Explore my robotics, computer vision, IoT and web projects, including WeeFund.in.">
