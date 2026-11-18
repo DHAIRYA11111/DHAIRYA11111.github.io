@@ -1,391 +1,82 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-    <meta property="og:image" content="https://dhairya11111.github.io/assets/city/city-night.webp">
-    <title>Dhairya Sansi | Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Dhairya Sansi - ECE Student, Developer, Automation, and Computer Vision." />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        darker: '#050505',
-                        accent: '#10B981', // Emerald 500
-                        card: '#111111',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dhairya Sansi — Engineering &amp; Web Portfolio</title>
+<meta name="description" content="Hi, I’m Dhairya Sansi, an ECE undergraduate at Manipal University Jaipur. Explore my robotics, computer vision, IoT and web projects, including WeeFund.">
+<meta name="theme-color" content="#10131c">
+<link rel="canonical" href="https://dhairya11111.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dhairya Sansi — Engineering &amp; Web Portfolio">
+<meta property="og:description" content="From a Jaipur workbench to the web. Explore Dhairya’s robotics, hardware and software projects.">
+<meta property="og:url" content="https://dhairya11111.github.io/">
+<meta property="og:image" content="https://dhairya11111.github.io/assets/city/city-night.webp">
+<meta property="og:image:alt" content="A night train crossing an illustrated Japanese city under a vermilion sun.">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/barlow.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+
+<link rel="stylesheet" href="lab.css">
+
+<script defer src="scene.js"></script>
+<script defer src="lab.js"></script>
+
+<script defer src="script.js"></script>
 </head>
-<body class="bg-darker text-gray-300 font-sans antialiased selection:bg-accent selection:text-white">
+<body>
+<a class="skip" href="#projects">Skip to projects</a>
+<header class="mast">
+<div class="mast-inner">
+<a class="wordmark" href="#home" aria-label="Dhairya Sansi, home"><img src="assets/mark.svg" alt="" width="34" height="34"><span>Dhairya Sansi<span class="brand-dot">.</span></span></a>
+<nav aria-label="Main" class="main-nav"><a href="#projects">Projects</a><a href="#lab">Workbench</a><a href="#about">Story</a><a href="#contact">Contact</a></nav>
+<a class="resume" href="assets/dhairya-resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
+</div>
+</header>
+<main>
+<section class="city-hero" id="home" aria-labelledby="hero-title">
+<div class="city-art" aria-hidden="true"><picture><source media="(max-width:640px)" srcset="assets/city/city-night-mobile.webp"><img src="assets/city/city-night.webp" width="1920" height="817" alt="" fetchpriority="high"></picture></div>
+<div class="city-shade" aria-hidden="true"></div>
+<canvas id="city-fx" aria-hidden="true"></canvas>
+<div class="hero-frame">
+<div class="hero-copy">
+<p class="hero-line"><i aria-hidden="true"></i> ENGINEERING PORTFOLIO <span>/</span> 2026</p>
+<p class="hello">Hi, I’m</p>
+<h1 id="hero-title" aria-label="Dhairya Sansi"><span>DHAIRYA</span><span>SANSI<b>.</b></span></h1>
+<p class="hero-intro">ECE undergraduate at <strong>Manipal University Jaipur.</strong> I build robots, develop computer vision systems, and make things for the web.</p>
+<div class="hero-actions"><a class="action-hot" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a><a class="story-link" href="#about">My story <span aria-hidden="true">↗</span></a></div>
+</div>
+</div>
+<div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
+<button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+</section>
+<div class="station-strip"><div class="strip-inner"><span><i class="pin-dot" aria-hidden="true"></i> JAIPUR, INDIA</span><span class="route-dash" aria-hidden="true"></span><span class="track-name">ROBOTICS &nbsp;/&nbsp; VISION &nbsp;/&nbsp; WEB</span><span class="time-display">IST <time id="jaipur-time">UTC+5:30</time></span></div></div>
 
-    <!-- Navbar -->
-    <header class="fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-darker/70 border-b border-gray-800" id="navbar">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-white tracking-tighter flex items-center gap-2">
-                <span class="w-8 h-8 rounded bg-accent text-darker flex items-center justify-center text-lg">DS</span>
-                Dhairya.
-            </a>
-            <nav class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#about" class="hover:text-accent transition-colors">About</a>
-                <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
-                <a href="#experience" class="hover:text-accent transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
-            </nav>
-            <a href="assets/dhairya-resume.pdf" target="_blank" class="hidden md:inline-flex items-center gap-2 border border-gray-700 hover:border-accent hover:text-accent px-4 py-2 rounded-full transition-all text-sm font-medium">
-                Resume <i data-feather="external-link" class="w-4 h-4"></i>
-            </a>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-gray-300 hover:text-white focus:outline-none" id="mobile-menu-btn">
-                <i data-feather="menu"></i>
-            </button>
-        </div>
-        <!-- Mobile Nav -->
-        <div class="md:hidden hidden absolute top-full left-0 w-full bg-dark border-b border-gray-800 p-6 flex flex-col gap-4 shadow-xl" id="mobile-menu">
-            <a href="#about" class="text-lg font-medium hover:text-accent">About</a>
-            <a href="#skills" class="text-lg font-medium hover:text-accent">Skills</a>
-            <a href="#experience" class="text-lg font-medium hover:text-accent">Experience</a>
-            <a href="#projects" class="text-lg font-medium hover:text-accent">Projects</a>
-            <a href="#contact" class="text-lg font-medium hover:text-accent">Contact</a>
-            <a href="assets/dhairya-resume.pdf" target="_blank" class="text-lg font-medium text-accent">Resume</a>
-        </div>
-    </header>
+<section id="projects" class="first-work"><div><p class="section-kicker"><span></span> SELECTED PROJECTS</p><h2>Out on the web<span>.</span></h2><div class="first-work-list"><a href="https://weefundd.vercel.app/"><img loading="lazy" alt="" src="assets/work/weefund-screen.webp"><strong>WeeFund ↗</strong><p>Explore the WeeFund platform.</p></a><a href="https://pixel-play-arcade.vercel.app/"><img loading="lazy" alt="" src="assets/work/arcade-screen.webp"><strong>Pixel // Play ↗</strong><p>A browser arcade.</p></a><a href="https://lifestyle-tracker-zeta.vercel.app/"><img loading="lazy" alt="" src="assets/work/too-drunk.webp"><strong>too drunk ↗</strong><p>A personal lifestyle tracker.</p></a><a href="https://www.shivpremagencies.in/"><img loading="lazy" alt="" src="assets/work/shivprem-botanicals.webp"><strong>Shiv Prem Agencies ↗</strong><p>An online fragrance catalogue and storefront.</p></a></div></div></section>
+<section id="lab" class="ds-lab" aria-labelledby="lab-title"><div class="lab-inner"><header class="lab-header"><span class="lab-rule" aria-hidden="true"></span><h2 id="lab-title">On the <em>workbench.</em></h2><span class="lab-rule" aria-hidden="true"></span></header><div class="lab-workspace"><div class="lab-select" role="tablist" aria-label="Robotics projects" aria-orientation="vertical" hidden><button type="button" role="tab" id="lab-tab-01" aria-controls="lab-panel-01" aria-selected="true" tabindex="0"><span aria-hidden="true">01</span><strong>Robotic Arm</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-02" aria-controls="lab-panel-02" aria-selected="false" tabindex="-1"><span aria-hidden="true">02</span><strong>RoboWar Bot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-03" aria-controls="lab-panel-03" aria-selected="false" tabindex="-1"><span aria-hidden="true">03</span><strong>RoboSoccer Bot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-04" aria-controls="lab-panel-04" aria-selected="false" tabindex="-1"><span aria-hidden="true">04</span><strong>ML Garbage-Detection Drone</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-05" aria-controls="lab-panel-05" aria-selected="false" tabindex="-1"><span aria-hidden="true">05</span><strong>Line-Following Robot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-06" aria-controls="lab-panel-06" aria-selected="false" tabindex="-1"><span aria-hidden="true">06</span><strong>Self-Balancing RC Car with Traction Control</strong><b aria-hidden="true">↗</b></button></div><div class="lab-panels"><details class="lab-card" id="lab-panel-01" open><summary>Robotic Arm</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 01</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-01" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-01" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-01)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="M63 218H401M127 227l125-170m-66 103Q197 93 248 66q53-28 115-4"/><ellipse cx="167" cy="218" rx="69" ry="11" class="lab-machine"/><path class="lab-shade" d="M98 217v7c8 17 129 17 138-1v-6c-13 15-124 17-138 0Z"/><ellipse cx="167" cy="210" rx="46" ry="8" class="lab-machine"/><path class="lab-machine" d="M134 207l9-35 41-4 17 38q-30 10-67 1Z"/><path class="lab-shade" d="M158 169l49-88 14 3-43 91Z"/><path class="lab-machine" d="M143 166l53-96q7-11 17-7l14 10q5 4 2 12l-54 95Z"/><path d="M159 152l41-71 13 7-41 70Z"/><path class="lab-machine" d="M217 62l90 24 13 13-5 12-105-24Z"/><path d="M231 73l67 19m-61-14 49 14"/><path class="lab-shade" d="M311 89l28 5 1 14-27 4-8-10Z"/><path class="lab-machine" d="M336 92l18-13 22 4 8 12-7 3-8-9-15-2-12 12Zm2 16 18 12 19-2 9-10-6-5-9 9-12 2-13-10Z"/><circle cx="163" cy="172" r="18" class="lab-machine"/><circle cx="163" cy="172" r="10.26"/><circle cx="163" cy="172" r="3.06" class="lab-pin"/><circle cx="212" cy="76" r="17" class="lab-machine"/><circle cx="212" cy="76" r="9.69"/><circle cx="212" cy="76" r="2.89" class="lab-pin"/><circle cx="308" cy="99" r="12" class="lab-machine"/><circle cx="308" cy="99" r="6.84"/><circle cx="308" cy="99" r="2.04" class="lab-pin"/></g><g class="lab-annot"><path d="M196 116q-23-11-37-7m6-4-6 4 7 3M288 55l20-18h45m-47 3 2-3 3-1M92 241h147m-147-5v10m147-10v10"/><circle cx="382" cy="103" r="10" stroke-dasharray="2 4"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Articulated motion</figcaption></figure><div class="lab-caption"><h3>Robotic Arm</h3><p>I worked on a robotic arm as part of my robotics projects. The sketch traces the idea from the base to the gripper, where motion at each joint changes the reach of the arm.</p></div></div></details><details class="lab-card" id="lab-panel-02"><summary>RoboWar Bot</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 02</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-02" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-02" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-02)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="M59 190l106 52 237-69-103-51Z"/><path class="lab-shade" d="m97 154 57 38 218-49-61-47Z"/><ellipse cx="329" cy="152" rx="18" ry="26" class="lab-dark"/><ellipse cx="327" cy="152" rx="13" ry="22" class="lab-machine"/><ellipse cx="326" cy="152" rx="7.56" ry="11.7"/><path d="M323 152h6m-3 -3v6"/><ellipse cx="189" cy="194" rx="19" ry="27" class="lab-dark"/><ellipse cx="187" cy="194" rx="14" ry="23" class="lab-machine"/><ellipse cx="186" cy="194" rx="7.98" ry="12.15"/><path d="M183 194h6m-3 -3v6"/><path class="lab-machine" d="m98 151 148-69 108 41-154 76Z"/><path class="lab-shade" d="m98 151 4 24 97 50 1-26Z"/><path class="lab-dark" d="m200 199 154-76-2 24-154 78Z"/><path class="lab-machine" d="m122 148 116-55 83 28-126 61Z"/><path class="lab-machine" d="m162 137 28-31 58-26 37 9 22 28-90 43Z"/><path d="m162 137 60 10 85-30m-117-11 45 9 50-26m-50 26-13 32m24-54 13 4m-21 2 13 4m-20 1 12 5"/><path d="m115 162 66 33m-66-25 66 33m31-8 29-14m53-26 39-19"/><ellipse cx="230" cy="192" rx="19" ry="26" class="lab-dark"/><ellipse cx="228" cy="192" rx="14" ry="22" class="lab-machine"/><ellipse cx="227" cy="192" rx="7.98" ry="11.7"/><path d="M224 192h6m-3 -3v6"/><ellipse cx="321" cy="148" rx="17" ry="23" class="lab-dark"/><ellipse cx="319" cy="148" rx="12" ry="19" class="lab-machine"/><ellipse cx="318" cy="148" rx="7.14" ry="10.35"/><path d="M315 148h6m-3 -3v6"/><circle cx="128" cy="149" r="2.3"/><circle cx="190" cy="177" r="2.3"/><circle cx="315" cy="122" r="2.3"/><circle cx="239" cy="97" r="2.3"/></g><g class="lab-annot"><path d="M78 143l151-72m-153 68 4 8m147-80 4 8M331 99l21-24h40"/><circle cx="329" cy="101" r="2"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Competition robotics</figcaption></figure><div class="lab-caption"><h3>RoboWar Bot</h3><p>I worked on a RoboWar bot for competition robotics. This chassis study shows the relationship between the body, wheels and the surface the robot moves across.</p></div></div></details><details class="lab-card" id="lab-panel-03"><summary>RoboSoccer Bot</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 03</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-03" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-03" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-03)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="M54 190l90 49 246-82-93-43ZM97 213l243-82"/><ellipse class="lab-ghost" cx="228" cy="167" rx="45" ry="15"/><path class="lab-shade" d="M127 133q7-35 73-47 65-11 103 14l12 57c-10 32-133 55-172 22Z"/><path class="lab-machine" d="M126 128c4-23 52-47 101-49 38-2 73 10 77 29 4 29-44 51-97 54-39 2-78-8-81-34Z"/><path class="lab-machine" d="M151 113l39-23 48-4 27 9-28 28-46 15-36-4Z"/><path d="m175 122 21-19 38-6m-56 30 25-17 35-7m-95 44 3 20m7-16 3 19m7-16 3 18"/><path class="lab-dark" d="m260 151 41-21 10 30-22 12-7-9-15 6Z"/><path class="lab-machine" d="M279 149q20 16 33-3l4 11q-12 23-35 3Z"/><ellipse cx="194" cy="167" rx="13" ry="19" class="lab-dark"/><ellipse cx="192" cy="167" rx="8" ry="15" class="lab-machine"/><ellipse cx="191" cy="167" rx="5.46" ry="8.55"/><path d="M188 167h6m-3 -3v6"/><circle cx="330" cy="158" r="19" class="lab-machine"/><path d="m323 153 11-2 6 8-8 9-10-5Zm0 0-5-7m16 5 3-9m3 17 8 2m-16 7-1 8m-9-13-8 3"/></g><g class="lab-annot"><path d="m350 146 18-28h32m-43 58 21-7 8-9M71 113l47-12m-9-1 9 1-5 6"/><circle cx="349" cy="147" r="2"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Competition robotics</figcaption></figure><div class="lab-caption"><h3>RoboSoccer Bot</h3><p>I worked on a RoboSoccer bot and won a RoboSoccer competition at LNMIIT, Jaipur. The sketch captures the moment a robot meets the ball.</p></div></div></details><details class="lab-card" id="lab-panel-04"><summary>ML Garbage-Detection Drone</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 04</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-04" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-04" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-04)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="m94 98 237 62M129 178l204-100"/><path class="lab-machine" d="m209 122-77-27-11 6 84 35Zm47-6 61-28 9 5-66 37Zm8 19 79 19 9-9-86-25Zm-56 0-59 30 3 9 74-33Z"/><path class="lab-shade" d="m197 117 49-15 38 20-2 18-39 21-44-21Z"/><path class="lab-machine" d="m197 117 43-19 44 23-41 22Z"/><path d="m214 117 25-11 27 14-24 12Z"/><path d="m210 144-9 20 10 6m49-21 12 17 14-3"/><path class="lab-machine" d="m226 150 15 4 11-7 3 9-12 8-17-5Z"/><circle cx="244" cy="157" r="3"/><ellipse cx="124" cy="97" rx="36" ry="12" class="lab-ghost"/><g transform="translate(124 97) rotate(-13)"><path class="lab-machine" d="M0 -2Q9 -10 28 -8Q38 -7 33 -4Q24 2 0 2Q-12 10 -31 8Q-39 6 -32 3Q-15 -2 0 -2Z"/><circle r="3" class="lab-pin"/></g><ellipse cx="323" cy="87" rx="36" ry="12" class="lab-ghost"/><g transform="translate(323 87) rotate(-13)"><path class="lab-machine" d="M0 -2Q9 -10 28 -8Q38 -7 33 -4Q24 2 0 2Q-12 10 -31 8Q-39 6 -32 3Q-15 -2 0 -2Z"/><circle r="3" class="lab-pin"/></g><ellipse cx="347" cy="147" rx="36" ry="12" class="lab-ghost"/><g transform="translate(347 147) rotate(-13)"><path class="lab-machine" d="M0 -2Q9 -10 28 -8Q38 -7 33 -4Q24 2 0 2Q-12 10 -31 8Q-39 6 -32 3Q-15 -2 0 -2Z"/><circle r="3" class="lab-pin"/></g><ellipse cx="147" cy="167" rx="36" ry="12" class="lab-ghost"/><g transform="translate(147 167) rotate(-13)"><path class="lab-machine" d="M0 -2Q9 -10 28 -8Q38 -7 33 -4Q24 2 0 2Q-12 10 -31 8Q-39 6 -32 3Q-15 -2 0 -2Z"/><circle r="3" class="lab-pin"/></g><path class="lab-ghost" d="m241 164-38 56 85-15-39-43"/><path class="lab-shade" d="m215 212 16-9 5 5 8-1 6 8-19 6Zm-25 11 6-3 5 1-3 5Z"/></g><g class="lab-annot"><path d="M193 207v-6h12m72-6 10-2v7m-86 25v7l12-2m69-11 8-2v-8M355 92l20-17h29"/><circle cx="351" cy="93" r="2"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Aerial computer vision</figcaption></figure><div class="lab-caption"><h3>ML Garbage-Detection Drone</h3><p>I worked on a drone project that uses machine learning to detect garbage. This sketch follows the camera’s view from the aircraft to a patch of ground.</p></div></div></details><details class="lab-card" id="lab-panel-05"><summary>Line-Following Robot</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 05</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-05" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-05" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-05)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="m64 209 75 29 227-89-44-21Z"/><path stroke-width="6" d="m61 224 79 18c21 6 31 2 47-4l185-77"/><path class="lab-machine" d="m96 148 173-74 106 44-175 83Z"/><path class="lab-shade" d="m96 148 104 53v14L96 164Z"/><path class="lab-dark" d="m200 201 175-83v15l-175 82Z"/><path d="m110 146 161-66 88 37-161 74Zm12-6 90 45m-16-75 94 40m-57-55 93 38"/><path class="lab-machine" d="m156 136 80-34 40 17-82 36Z"/><path d="m167 136 68-27 27 11-67 28Z"/><path class="lab-machine" d="m111 166 21 9 1 10-21-9Zm30 14 21 9 1 10-21-9Z"/><ellipse cx="221" cy="201" rx="13" ry="19" class="lab-dark"/><ellipse cx="219" cy="201" rx="8" ry="15" class="lab-machine"/><ellipse cx="218" cy="201" rx="5.46" ry="8.55"/><path d="M215 201h6m-3 -3v6"/><ellipse cx="332" cy="149" rx="13" ry="19" class="lab-dark"/><ellipse cx="330" cy="149" rx="8" ry="15" class="lab-machine"/><ellipse cx="329" cy="149" rx="5.46" ry="8.55"/><path d="M326 149h6m-3 -3v6"/><circle cx="121" cy="146" r="2.3"/><circle cx="197" cy="186" r="2.3"/><circle cx="354" cy="117" r="2.3"/><circle cx="271" cy="84" r="2.3"/><path d="m252 185 38-19 1 8-38 19Z"/></g><g class="lab-annot"><path d="m95 130 167-72m-169 67 5 10m162-82 5 10M159 214l16 14 27-1m-23 3-4-2 2-5"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Industrial robotics</figcaption></figure><div class="lab-caption"><h3>Line-Following Robot</h3><p>During my internship at Abilities India, I built a Raspberry Pi–based line-following robot. Its design target was to transport payloads of up to 150 kg.</p></div></div></details><details class="lab-card" id="lab-panel-06"><summary>Self-Balancing RC Car with Traction Control</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 06</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
+<defs><pattern id="lab-grid-06" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-06" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
+<rect width="474" height="272" fill="url(#lab-grid-06)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><ellipse class="lab-ghost" cx="226" cy="213" rx="108" ry="14"/><path class="lab-ghost" d="M96 214H384m-158-20V47m-20 149 44-144"/><ellipse cx="270" cy="166" rx="27" ry="38" class="lab-dark"/><ellipse cx="268" cy="165" rx="20" ry="30" class="lab-machine"/><path class="lab-shade" d="m172 153 25-62 59-13 25 54-16 33-58 21Z"/><path class="lab-machine" d="m173 152 26-64 17-6 20 63-24 34Z"/><path class="lab-machine" d="m198 89 55-20 22 11-59 22Z"/><path class="lab-machine" d="m216 102 59-22 9 53-48 20Z"/><path d="m228 105 37-14 4 20-37 13Zm8 26 29-10m-27 15 28-10"/><path class="lab-dark" d="m193 162 63-30 16 5-62 32Z"/><ellipse cx="189" cy="176" rx="27" ry="37" class="lab-dark"/><ellipse cx="187" cy="176" rx="22" ry="33" class="lab-machine"/><ellipse cx="186" cy="176" rx="11.34" ry="16.65"/><path d="M183 176h6m-3 -3v6"/><ellipse cx="184" cy="174" rx="10" ry="14" class="lab-machine"/><path d="m181 153 5 8m-18 7 8 2m-2 21 6-7m12-16 8-5m-8 19 6 4"/></g><g class="lab-annot"><path d="M164 87q28-30 68-31m-9-4 9 4-8 4M170 231h102m-102-4v8m102-8v8M286 115l28-24h62"/><circle cx="284" cy="117" r="2"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Vehicle control</figcaption></figure><div class="lab-caption"><h3>Self-Balancing RC Car with Traction Control</h3><p>I worked on a self-balancing RC car with traction control. The drawing explores the two control problems in its name: keeping the vehicle upright and managing grip at the wheels.</p></div></div></details></div></div></div></section>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse-slow"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-            </div>
-            
-            <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
-                <p class="text-accent font-semibold tracking-widest uppercase mb-4 text-sm">Hi, I'm</p>
-                <h1 class="text-7xl md:text-9xl lg:text-[10rem] font-black text-white leading-none mb-2 tracking-tighter drop-shadow-xl">
-                    Dhairya Sansi.
-                </h1>
-                <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-500 leading-tight mb-8 tracking-tight">
-                    Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">intelligent</span> systems & web apps.
-                </h2>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed">
-                    Electronics & Communication Engineering student at Manipal University Jaipur with experience spanning automation, web development, and campus outreach.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="bg-accent hover:bg-emerald-400 text-darker font-bold px-8 py-3 rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                        View Projects
-                    </a>
-                    <a href="#contact" class="border border-gray-700 hover:border-gray-500 text-white font-medium px-8 py-3 rounded-full transition-all hover:bg-gray-800 active:scale-95">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-        </section>
+<section class="origin" id="about" aria-labelledby="origin-title">
+<div class="origin-wrap">
+<div class="origin-text"><p class="section-kicker"><span></span> ABOUT ME</p><h2 id="origin-title">Hi, I’m Dhairya<span>.</span></h2>
+<p>At Manipal University Jaipur, I study Electronics and Communication Engineering. I like projects that give me something to test with my own hands. A line-following robot has a wonderfully blunt way of telling you when your code is wrong.</p>
+<p>That’s what connects my work on motor drivers, piston inspection and websites. I get to follow an idea from a sketch to the part where someone can actually use it.</p>
+<a class="story-link" href="assets/dhairya-resume.pdf" target="_blank" rel="noopener">Read my résumé <span aria-hidden="true">↗</span></a></div>
+<aside class="rail-ticket" aria-label="Education"><div class="ticket-head"><span>MANIPAL UNIVERSITY JAIPUR</span><span lang="ja" aria-hidden="true">乗車券</span></div><div class="ticket-main"><span class="ticket-program">B.TECH</span><strong>ECE</strong><span class="ticket-city">JAIPUR <i aria-hidden="true">↗</i></span></div><div class="ticket-end"><span>ENROLLED <b>AUG 2025</b></span><span>EXPECTED GRADUATION <b>2029</b></span><i class="bars" aria-hidden="true"></i></div></aside>
+</div></section>
 
-        <!-- About Section -->
-        <section id="about" class="py-24 bg-dark">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
-                    <div class="w-16 h-1 bg-accent rounded"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="text-gray-400 space-y-6 text-lg leading-relaxed">
-                        <p>
-                            Hi, I’m Dhairya, an Electronics and Communication Engineering undergraduate at Manipal University Jaipur. I like the moment a system starts responding, whether it’s a motor turning on the workbench or someone using a tool I built.
-                        </p>
-                        <p>
-                            At Abilities India I helped assemble and test an Raspberry Pi line-following robot designed to carry up to 150 kg. At ACM MUJ I led a motor-driver project, from schematics and connection mapping through integration. My client projects take me through the whole process, from the first conversation to a working site.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-card p-6 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
-                            <h3 class="text-4xl font-bold text-white mb-2">ECE</h3>
-                            <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Student</p>
-                        </div>
-                        <div class="bg-card p-6 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
-                            <h3 class="text-4xl font-bold text-white mb-2">150<span class="text-xl">kg</span></h3>
-                            <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">AGV Payload</p>
-                        </div>
-                        <div class="bg-card p-6 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors col-span-2">
-                            <h3 class="text-2xl font-bold text-white mb-2">Web & AI</h3>
-                            <p class="text-sm text-gray-500 uppercase tracking-wider font-semibold">Freelancer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="py-24 bg-darker">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Technical Stack</h2>
-                    <div class="w-16 h-1 bg-accent rounded"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-card border border-gray-800 p-8 rounded-2xl hover:border-accent hover:-translate-y-1 transition-all group shadow-lg">
-                        <i data-feather="users" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-bold text-white mb-3">Campus & Marketing</h3>
-                        <p class="text-gray-400 text-sm mb-4">Outreach, Social Media, Brand Promotion, Student Engagement, Event Coordination.</p>
-                    </div>
-                    <div class="bg-card border border-gray-800 p-8 rounded-2xl hover:border-accent hover:-translate-y-1 transition-all group shadow-lg">
-                        <i data-feather="layout" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
-                        <p class="text-gray-400 text-sm mb-4">React.js, Node.js, MongoDB, JavaScript, FastAPI, HTML/CSS, Tailwind CSS.</p>
-                    </div>
-                    <div class="bg-card border border-gray-800 p-8 rounded-2xl hover:border-accent hover:-translate-y-1 transition-all group shadow-lg">
-                        <i data-feather="cpu" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-bold text-white mb-3">Automation & Robotics</h3>
-                        <p class="text-gray-400 text-sm mb-4">AGV, Motor Control, Robotics, Sensors, Embedded Systems, PID.</p>
-                    </div>
-                    <div class="bg-card border border-gray-800 p-8 rounded-2xl hover:border-accent hover:-translate-y-1 transition-all group shadow-lg">
-                        <i data-feather="eye" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-xl font-bold text-white mb-3">Computer Vision</h3>
-                        <p class="text-gray-400 text-sm mb-4">Python, OpenCV, YOLO, Roboflow, Object Detection workflows.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-24 bg-dark">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Experience</h2>
-                    <div class="w-16 h-1 bg-accent rounded"></div>
-                </div>
-
-                <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-800 before:to-transparent">
-                    
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark bg-gray-800 group-hover:bg-accent transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
-                            <i data-feather="briefcase" class="w-4 h-4 text-gray-400 group-hover:text-darker transition-colors"></i>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-card border border-gray-800 rounded-2xl shadow-xl transition-all group-hover:border-gray-600 group-hover:-translate-y-1">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <h3 class="font-bold text-xl text-white">Campus Ambassador</h3>
-                                <span class="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full mt-1 sm:mt-0">6 months</span>
-                            </div>
-                            <h4 class="text-gray-400 font-medium mb-4">Bread & Butter</h4>
-                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">Represented the brand on campus, managed social media presence, and planned outreach events. Expanded reach through peer-to-peer promotion and coordinated promotional activities.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Outreach</span>
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Social Media</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark bg-gray-800 group-hover:bg-accent transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
-                            <i data-feather="tool" class="w-4 h-4 text-gray-400 group-hover:text-darker transition-colors"></i>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-card border border-gray-800 rounded-2xl shadow-xl transition-all group-hover:border-gray-600 group-hover:-translate-y-1">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <h3 class="font-bold text-xl text-white">Automation Intern</h3>
-                                <span class="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full mt-1 sm:mt-0">Internship</span>
-                            </div>
-                            <h4 class="text-gray-400 font-medium mb-4">Abilities India</h4>
-                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">Worked on an Line-Following Robot (AGV) designed to lift and transport loads of up to 150 kg. Contributed to system assembly, testing, troubleshooting and refinement.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Robotics</span>
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Embedded</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark bg-gray-800 group-hover:bg-accent transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
-                            <i data-feather="monitor" class="w-4 h-4 text-gray-400 group-hover:text-darker transition-colors"></i>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-card border border-gray-800 rounded-2xl shadow-xl transition-all group-hover:border-gray-600 group-hover:-translate-y-1">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <h3 class="font-bold text-xl text-white">Freelance Web Developer</h3>
-                                <span class="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full mt-1 sm:mt-0">Independent</span>
-                            </div>
-                            <h4 class="text-gray-400 font-medium mb-4">Client Projects</h4>
-                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">Developed websites and digital experiences for multiple clients. Managed projects from requirement gathering to delivery and translated business requirements into user-friendly solutions.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Web Dev</span>
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Project Mgmt</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark bg-gray-800 group-hover:bg-accent transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
-                            <i data-feather="star" class="w-4 h-4 text-gray-400 group-hover:text-darker transition-colors"></i>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-card border border-gray-800 rounded-2xl shadow-xl transition-all group-hover:border-gray-600 group-hover:-translate-y-1">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <h3 class="font-bold text-xl text-white">Team Head — Motor-driver development</h3>
-                                <span class="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full mt-1 sm:mt-0">Leadership</span>
-                            </div>
-                            <h4 class="text-gray-400 font-medium mb-4">ACM MUJ Student Chapter</h4>
-                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">Led motor-driver development, coordinated circuit architecture and connection mapping, and documented hardware–software integration.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Leadership</span>
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Coordination</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-dark bg-gray-800 group-hover:bg-accent transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10">
-                            <i data-feather="calendar" class="w-4 h-4 text-gray-400 group-hover:text-darker transition-colors"></i>
-                        </div>
-                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 bg-card border border-gray-800 rounded-2xl shadow-xl transition-all group-hover:border-gray-600 group-hover:-translate-y-1">
-                            <div class="flex flex-wrap justify-between items-center mb-2">
-                                <h3 class="font-bold text-xl text-white">Committee Member</h3>
-                                <span class="text-sm text-accent font-medium bg-accent/10 px-3 py-1 rounded-full mt-1 sm:mt-0">Events</span>
-                            </div>
-                            <h4 class="text-gray-400 font-medium mb-4">Oneiros'26, Tech-Ideate'26, Elicit'26</h4>
-                            <p class="text-gray-500 text-sm mb-4 leading-relaxed">Contributed to the planning, coordination, and execution of university annual student fests and technical events, collaborating with core committee members.</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Logistics</span>
-                                <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-2 py-1 rounded">Execution</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 bg-darker">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
-                    <div class="w-16 h-1 bg-accent rounded"></div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-card border border-gray-800 rounded-2xl p-8 hover:border-gray-600 transition-colors flex flex-col h-full shadow-lg hover:-translate-y-1 duration-300">
-                        <div class="mb-6 flex justify-between items-center">
-                            <span class="text-accent text-sm font-bold tracking-wider uppercase">Robotics</span>
-                            <span class="text-gray-500 text-sm">Internship</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">150 kg Line-Following Robot</h3>
-                        <p class="text-gray-400 mb-6 flex-grow leading-relaxed">
-                            Worked on an AGV designed to lift and transport loads of up to 150 kg at Abilities India. Contributed to system assembly, testing, troubleshooting and refinement working hands-on with motors, sensors, motor control and embedded hardware.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">AGV Design</span>
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">Embedded</span>
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">Motor Control</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-card border border-gray-800 rounded-2xl p-8 hover:border-gray-600 transition-colors flex flex-col h-full shadow-lg hover:-translate-y-1 duration-300">
-                        <div class="mb-6 flex justify-between items-center">
-                            <span class="text-accent text-sm font-bold tracking-wider uppercase">Web Dev</span>
-                            <span class="text-gray-500 text-sm">Freelance</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Freelance Web Solutions</h3>
-                        <p class="text-gray-400 mb-6 flex-grow leading-relaxed">
-                            Developed websites and digital experiences for multiple clients. Managed projects from requirement gathering through testing and delivery, translating business requirements into functional and user-friendly web solutions.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">React.js</span>
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">Node.js</span>
-                            <span class="text-xs font-semibold text-gray-400 bg-gray-800 px-3 py-1.5 rounded-full">Tailwind CSS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Animated Banner Projects -->
-                <div class="grid md:grid-cols-2 gap-8">
-                    
-                    <a href="https://lifestyle-tracker-zeta.vercel.app" target="_blank" rel="noopener noreferrer" class="project-banner relative block h-72 rounded-2xl overflow-hidden group shadow-2xl active:scale-95 transition-transform duration-300 border border-gray-800 hover:border-gray-500">
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-800 via-pink-700 to-red-600 opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 z-0"></div>
-                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8cGF0aCBkPSJNMCAwTDggOFpNOCAwTDAgOFoiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4=')] mix-blend-overlay z-0"></div>
-                        <div class="absolute inset-0 bg-darker/60 group-hover:bg-darker/20 transition-colors duration-500 z-10"></div>
-                        
-                        <div class="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center">
-                            <h3 class="text-5xl font-black text-white uppercase tracking-tighter drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] transform group-hover:-translate-y-3 transition-transform duration-500">
-                                too drunk
-                            </h3>
-                            <div class="mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2 text-white font-bold bg-white/20 px-6 py-3 rounded-full backdrop-blur-md shadow-lg border border-white/30">
-                                View Project <i data-feather="arrow-right" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="https://pixel-play-arcade.vercel.app" target="_blank" rel="noopener noreferrer" class="project-banner relative block h-72 rounded-2xl overflow-hidden group shadow-2xl active:scale-95 transition-transform duration-300 border border-gray-800 hover:border-gray-500">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-800 via-cyan-600 to-emerald-500 opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700 z-0"></div>
-                        <div class="absolute inset-0 opacity-30 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px] mix-blend-overlay z-0 group-hover:bg-[size:32px_32px] transition-all duration-700"></div>
-                        <div class="absolute inset-0 bg-darker/60 group-hover:bg-darker/20 transition-colors duration-500 z-10"></div>
-                        
-                        <div class="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center">
-                            <h3 class="text-5xl font-black text-white tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] transform group-hover:-translate-y-3 transition-transform duration-500 font-mono">
-                                pixel//play
-                            </h3>
-                            <div class="mt-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-2 text-white font-bold bg-white/20 px-6 py-3 rounded-full backdrop-blur-md shadow-lg border border-white/30">
-                                View Project <i data-feather="arrow-right" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-dark">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Let's build something <span class="text-accent">useful</span>.</h2>
-                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-                    Reach out for AI, robotics, automation, web development, or collaboration opportunities. I'm always open to discussing new projects and ideas.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="mailto:sansidhairya11@gmail.com" class="flex items-center justify-center gap-3 bg-white text-darker font-bold px-8 py-4 rounded-full hover:bg-gray-200 transition-colors shadow-lg hover:scale-105 active:scale-95 duration-200">
-                        <i data-feather="mail" class="w-5 h-5"></i> Email Me
-                    </a>
-                    <a href="tel:+919870477844" class="flex items-center justify-center gap-3 border border-gray-700 text-white font-bold px-8 py-4 rounded-full hover:bg-gray-800 transition-colors hover:scale-105 active:scale-95 duration-200">
-                        <i data-feather="phone" class="w-5 h-5"></i> +91 9870477844
-                    </a>
-                </div>
-                
-                <div class="flex justify-center gap-10 mt-16">
-                    <a href="https://github.com/DHAIRYA11111" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 duration-200" aria-label="GitHub">
-                        <i data-feather="github" class="w-8 h-8"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/dhairya-s-31777b242/" target="_blank" class="text-gray-500 hover:text-white transition-colors hover:scale-110 duration-200" aria-label="LinkedIn">
-                        <i data-feather="linkedin" class="w-8 h-8"></i>
-                    </a>
-                    <a href="assets/dhairya-resume.pdf" target="_blank" class="text-gray-500 hover:text-accent transition-colors hover:scale-110 duration-200" aria-label="Resume">
-                        <i data-feather="file-text" class="w-8 h-8"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-darker py-8 border-t border-gray-900 text-center">
-        <p class="text-gray-600 text-sm">
-            &copy; <span id="year"></span> Dhairya Sansi. All rights reserved.
-        </p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<section class="first-work" id="experience"><div><p class="section-kicker"><span></span> FIELD NOTES</p><h2>From the workbench<span>.</span></h2><p>At Abilities India I worked on a Raspberry Pi line-following robot and a computer vision workflow for finding cracks and surface flaws in pistons. At ACM MUJ I led motor-driver development. My other work includes Hall-effect sensor research and freelance web and IoT projects.</p><p id="skills">Arduino · Raspberry Pi · Circuit design · Machine learning · Web development</p></div></section>
+<section class="terminus" id="contact" aria-labelledby="contact-title"><div class="contact-wrap"><div><p class="section-kicker"><span></span> CONTACT</p><h2 id="contact-title" aria-label="Let’s build something">Let’s build<br><em>something.</em></h2></div><div class="contact-actions"><p>Have a robotics project, a web idea, or a good engineering problem? I’d love to hear it.</p><div class="mail-group"><a class="mail-link" href="mailto:sansidhairya11@gmail.com">sansidhairya11@gmail.com <span aria-hidden="true">↗</span></a><button id="copy-email" type="button" hidden>Copy email</button><span class="visually-hidden" role="status" id="copy-status"></span></div><div class="socials"><a href="https://github.com/DHAIRYA11111">GitHub ↗</a><a href="https://www.linkedin.com/in/dhairya-s-31777b242/">LinkedIn ↗</a><a href="tel:+919870477844">Phone ↗</a></div></div></div></section>
+</main><footer class="endbar"><div><span>© 2026 Dhairya Sansi</span><a href="#home">Back to top ↑</a></div></footer>
+</body></html>
