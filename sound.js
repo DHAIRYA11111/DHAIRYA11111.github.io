@@ -1,11 +1,16 @@
-// Original departure chime: a short pentatonic phrase on synthesized bells.
+// The looping score and interactive station effects share one audio preference.
 (() => {
   const toggle = document.querySelector('#station-sound');
-  const Audio = window.AudioContext || window.webkitAudioContext;
-  if (!Audio || !toggle) return;
+  const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  const music = document.getElementById('night-score');
+  if (!music || !toggle) return;
   toggle.hidden = false;
 
-  let context, volume, enabled = false, changing = false;
+  let context, volume;
+  let enabled = true;
+  const preferenceKey = 'night-line-audio-muted';
+  try { enabled = localStorage.getItem(preferenceKey) !== 'yes'; } catch {}
+  music.volume = .48;
   let lastPlayed = -Infinity;
   let lastSwitch = -Infinity;
   let noiseBuffer, heroVisible = true;
@@ -17,10 +22,15 @@
   dock.addEventListener('click', () => toggle.click());
   document.body.append(dock);
 
-  function updateDock() { dock.hidden = !enabled || heroVisible; }
+  function updateDock() {
+    dock.hidden = heroVisible;
+    dock.textContent = enabled ? 'Mute audio' : 'Unmute audio';
+    toggle.setAttribute('aria-pressed',String(enabled));
+    toggle.querySelector('.sound-state').textContent = enabled ? 'Mute audio' : 'Unmute audio';
+  }
   // Filtered noise supplies a passing-rail sweep and a dry control click.
   function rush(duration, startHz, endHz, level) {
-    if (!enabled || document.hidden || context.state !== 'running') return;
+    if (!enabled || document.hidden || context?.state !== 'running') return;
     if (!noiseBuffer) {
       noiseBuffer = context.createBuffer(1, Math.ceil(context.sampleRate*1.6), context.sampleRate);
       const samples = noiseBuffer.getChannelData(0);
@@ -64,37 +74,54 @@
     }
   }
   function phrase(notes) {
-    if (!enabled || document.hidden || context.state !== 'running') return;
+    if (!enabled || document.hidden || context?.state !== 'running') return;
     lastPlayed = performance.now();
     notes.forEach(([pitch,offset,length]) => bell(pitches[pitch],context.currentTime+.025+offset,length));
   }
-  toggle.addEventListener('click', async () => {
-    if (changing) return;
-    changing = true;
+  function startMusic() {
+    if (enabled && music.paused) {
+      // Browsers that require activation reject this on load. An ordinary
+      // trusted gesture below retries synchronously within the activation.
+      const playback = music.play();
+      playback?.catch(() => {});
+    }
+  }
+  function unlockEffects() {
+    if (!enabled || !AudioEngine) return;
     try {
       if (!context) {
-        context = new Audio();
+        context = new AudioEngine();
         volume = context.createGain();
-        volume.gain.value = 0;
+        volume.gain.value = .13;
         volume.connect(context.destination);
       }
-      if (!enabled) {
-        await context.resume();
-        enabled = true;
-        volume.gain.setTargetAtTime(.14,context.currentTime,.015);
-        phrase([[0,0,.75],[2,.16,.7],[4,.40,1.2],[3,.70,1.35]]);
-      } else {
-        enabled = false;
-        volume.gain.cancelScheduledValues(context.currentTime);
-        volume.gain.setTargetAtTime(0,context.currentTime,.02);
-      }
-      updateDock();
-      toggle.setAttribute('aria-pressed', String(enabled));
-      toggle.querySelector('.sound-state').textContent = enabled ? 'Sound on' : 'Sound off';
-    } catch {
-      toggle.querySelector('.sound-state').textContent = 'Audio unavailable';
-    } finally { changing = false; }
+      if (context.state !== 'running') context.resume().catch(() => {});
+    } catch {}
+  }
+  function activate(event) {
+    if (!enabled || !event.isTrusted || toggle.contains(event.target) || dock.contains(event.target)) return;
+    startMusic();
+    unlockEffects();
+  }
+  for (const type of ['pointerdown','pointerup','keydown','click','touchend']) {
+    document.addEventListener(type,activate,{capture:true,passive:true});
+  }
+  toggle.addEventListener('click', () => {
+    enabled = !enabled;
+    try { localStorage.setItem(preferenceKey,enabled ? 'no' : 'yes'); } catch {}
+    if (enabled) {
+      startMusic();
+      unlockEffects();
+      if (volume) volume.gain.setTargetAtTime(.13,context.currentTime,.02);
+    } else {
+      music.pause();
+      if (volume) volume.gain.setTargetAtTime(0,context.currentTime,.02);
+    }
+    updateDock();
   });
+  updateDock();
+  startMusic();
+  addEventListener('pageshow',startMusic);
 
   function workbenchClick() {
     if (!enabled || document.hidden || performance.now()-lastSwitch<180) return;

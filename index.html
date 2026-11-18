@@ -26,7 +26,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="lab.css?v=40492061e1">
 <link rel="stylesheet" href="notes.css?v=fa6aca07fd">
 <link rel="stylesheet" href="motion.css?v=af947f0d1f">
-<script defer src="sound.js?v=c78d18759f"></script>
+<script defer src="sound.js?v=d947ae7d60"></script>
 <script defer src="scene.js?v=2d259d8a30"></script>
 <script defer src="lab.js?v=86251530d1"></script>
 
@@ -59,7 +59,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 </div>
 </div>
 <div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
-<div class="scene-controls"><button type="button" id="station-sound" class="station-sound" aria-pressed="false" aria-label="Toggle Japanese-inspired station sounds" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Sound off</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
+<div class="scene-controls"><audio id="night-score" loop preload="metadata" src="assets/audio/night-line.mp3"></audio><button type="button" id="station-sound" class="station-sound" aria-pressed="false" aria-label="Background music and station effects" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Mute audio</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
 </section>
 <div class="station-strip"><div class="strip-inner"><span><i class="pin-dot" aria-hidden="true"></i> JAIPUR, INDIA</span><span class="route-dash" aria-hidden="true"></span><span class="track-name">ROBOTICS &nbsp;/&nbsp; VISION &nbsp;/&nbsp; WEB</span><span class="time-display">IST <time id="jaipur-time">UTC+5:30</time></span></div></div>
 
