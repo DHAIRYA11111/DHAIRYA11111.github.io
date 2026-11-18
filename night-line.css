@@ -115,3 +115,5 @@ img{max-width:100%;display:block}
 @media(prefers-reduced-motion:no-preference){.station-sound[aria-pressed=true] i{animation:station-bars 1.4s ease-in-out infinite alternate}.station-sound[aria-pressed=true] i:nth-child(2){animation-delay:-.45s}.station-sound[aria-pressed=true] i:nth-child(3){animation-delay:-.8s}}
 @media(max-width:360px){.terminus h2{font-size:19.5vw}.contact-wrap{grid-template-columns:minmax(0,1fr)}}
 main #experience,main #skills,main #projects,main #lab{scroll-margin-top:8px}
+.sound-dock{position:fixed;bottom:max(16px,env(safe-area-inset-bottom));right:17px;z-index:9;background:#151925;color:#fff7e4;box-shadow:0 3px 15px #0003}
+.sound-dock:before{content:'♪';color:var(--mint);font-size:1rem}

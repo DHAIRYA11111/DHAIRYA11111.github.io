@@ -7,6 +7,42 @@
 
   let context, volume, enabled = false, changing = false;
   let lastPlayed = -Infinity;
+  let lastSwitch = -Infinity;
+  let noiseBuffer, heroVisible = true;
+  const dock = document.createElement('button');
+  dock.type = 'button';
+  dock.className = 'station-sound sound-dock';
+  dock.textContent = 'Mute sound';
+  dock.hidden = true;
+  dock.addEventListener('click', () => toggle.click());
+  document.body.append(dock);
+
+  function updateDock() { dock.hidden = !enabled || heroVisible; }
+  // Filtered noise supplies a passing-rail sweep and a dry control click.
+  function rush(duration, startHz, endHz, level) {
+    if (!enabled || document.hidden || context.state !== 'running') return;
+    if (!noiseBuffer) {
+      noiseBuffer = context.createBuffer(1, Math.ceil(context.sampleRate*1.6), context.sampleRate);
+      const samples = noiseBuffer.getChannelData(0);
+      for (let i=0; i<samples.length; i++) samples[i] = Math.random()*2-1;
+    }
+    const source = context.createBufferSource();
+    source.buffer = noiseBuffer;
+    const filter = context.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.Q.value = .65;
+    const now = context.currentTime;
+    filter.frequency.setValueAtTime(startHz, now);
+    filter.frequency.exponentialRampToValueAtTime(endHz,now+duration);
+    const gain = context.createGain();
+    gain.gain.setValueAtTime(.0001,now);
+    gain.gain.exponentialRampToValueAtTime(level,now+duration*.22);
+    gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+    source.connect(filter); filter.connect(gain); gain.connect(volume);
+    source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
+    source.start(now);
+    source.stop(now+duration);
+  }
   const pitches = [293.665, 329.628, 369.994, 440, 493.883, 587.33];
 
   function bell(frequency, start, length) {
@@ -52,6 +88,7 @@
         volume.gain.cancelScheduledValues(context.currentTime);
         volume.gain.setTargetAtTime(0,context.currentTime,.02);
       }
+      updateDock();
       toggle.setAttribute('aria-pressed', String(enabled));
       toggle.querySelector('.sound-state').textContent = enabled ? 'Sound on' : 'Sound off';
     } catch {
@@ -59,7 +96,28 @@
     } finally { changing = false; }
   });
 
+  function workbenchClick() {
+    if (!enabled || document.hidden || performance.now()-lastSwitch<180) return;
+    lastSwitch = performance.now();
+    rush(.085,1350,520,.7);
+  }
+  const workbench = document.querySelector('#lab [role="tablist"]');
+  workbench?.addEventListener('click', workbenchClick);
+  workbench?.addEventListener('keydown', e => {
+    if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)) workbenchClick();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!context || !enabled) return;
+    if (document.hidden) context.suspend().catch(()=>{});
+    else context.resume().catch(()=>{});
+  });
   if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      const leaving = heroVisible && !entry.isIntersecting;
+      heroVisible = entry.isIntersecting;
+      updateDock();
+      if (leaving) rush(1.25,180,940,.36);
+    }).observe(document.querySelector('#home'));
     const sections = [...document.querySelectorAll('main > section:not(#home)')];
     const entryChime = new IntersectionObserver(changes => {
       const visible = changes.find(change => change.isIntersecting);

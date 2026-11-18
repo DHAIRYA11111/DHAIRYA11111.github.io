@@ -1,0 +1,9 @@
+#home.ds-has-train{--ds-train-height:clamp(50px,10.5%,88px)}
+#home .ds-train-world{position:absolute;inset:auto 0 0;height:var(--ds-train-height);width:100%;z-index:-1;pointer-events:none;overflow:hidden;isolation:isolate;contain:layout paint}
+#home .ds-train-world svg{display:block;width:100%;height:100%;overflow:hidden}
+#home.ds-has-train .scene-controls{bottom:calc(var(--ds-train-height) + 6px)}
+@media(max-width:640px){
+  #home.ds-has-train{--ds-train-height:clamp(44px,8.5%,62px)}
+  #home.ds-has-train .scene-caption{bottom:calc(var(--ds-train-height) + 10px)}
+  #home.ds-has-train .hero-frame{padding-bottom:125px}
+}
