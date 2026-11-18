@@ -58,28 +58,7 @@
       heroOnscreen = entry.isIntersecting;
       if (heroOnscreen) scheduleWords();
     }).observe(hero);
-    const sections = document.querySelectorAll('main > section:not(#home)');
-    const arrivals = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        arrivals.unobserve(entry.target);
-        if (!isEnabled()) continue;
-        // Choose up to three editorial beats from this section. Large project cards
-        // retain their own layout and interaction, even during their arrival.
-        const candidates = [
-          entry.target.querySelector('.section-kicker, .proj-kicker, .lab-rule'),
-          entry.target.querySelector('h2'),
-          entry.target.querySelector('.lab-select, .rail-ticket, .contact-actions, .proj-tile'),
-        ].filter(Boolean);
-        candidates.forEach((node, i) => {
-          const className = node.classList.contains('lab-rule') ? 'ds-arrival-rule' : 'ds-scroll-beat';
-          node.style.setProperty('--beat-delay', (i * 65) + 'ms');
-          node.classList.add(className);
-          setTimeout(() => {node.classList.remove(className); node.style.removeProperty('--beat-delay');}, 950);
-        });
-      }
-    }, {rootMargin:'0px 0px -5% 0px',threshold:0});
-    sections.forEach(section => arrivals.observe(section));
+
   }
   addEventListener('scroll', scheduleWords, {passive:true});
   addEventListener('resize', scheduleWords, {passive:true});
@@ -157,7 +136,6 @@
     if (isEnabled()) return scheduleWords();
     finishIntro();
     words.forEach(word => {word.style.removeProperty('--word-x'); word.style.removeProperty('--word-y');});
-    document.querySelectorAll('.ds-scroll-beat,.ds-arrival-rule').forEach(node=>node.classList.remove('ds-scroll-beat','ds-arrival-rule'));
   }
   if (pauseButton) new MutationObserver(syncMotion).observe(pauseButton,{attributes:true,attributeFilter:['aria-pressed']});
   listen(reduced,syncMotion);
@@ -172,8 +150,6 @@
   if (!panel || !('IntersectionObserver' in window)) return;
   const records = [...panel.querySelectorAll('.fn-record')];
   const indicator = panel.querySelector('.fn-meter-number');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const pause = document.querySelector('#pause-scene');
   const passing = new IntersectionObserver(entries => {
     const hit = entries.filter(entry=>entry.isIntersecting).at(-1);
     if (!hit) return;
@@ -184,15 +160,4 @@
   },{rootMargin:'-24% 0px -50% 0px'});
   records.forEach(record=>passing.observe(record));
 
-  const subjects = document.querySelectorAll('.fn-record article,.fn-skills dl>div,.proj-grid>a,.proj-link,.origin-text>p:not(.section-kicker),.lab-caption');
-  const entrance = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry=>entry.isIntersecting);
-    visible.forEach(({target},index) => {
-      entrance.unobserve(target);
-      if (reduced.matches || pause?.getAttribute('aria-pressed')==='true' || !target.animate) return;
-      target.animate([{opacity:.25,transform:'translateY(28px) scale(.985)'},{opacity:1,transform:'none'}],
-        {duration:620,delay:index*45,easing:'cubic-bezier(.16,1,.3,1)'});
-    });
-  },{threshold:.07});
-  subjects.forEach(el=>entrance.observe(el));
 })();

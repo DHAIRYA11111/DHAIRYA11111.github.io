@@ -25,17 +25,19 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="work.css?v=cde26b7839">
 <link rel="stylesheet" href="lab.css?v=40492061e1">
 <link rel="stylesheet" href="notes.css?v=fa6aca07fd">
-<link rel="stylesheet" href="motion.css?v=af947f0d1f">
+<link rel="stylesheet" href="motion.css?v=03febc748c">
 <script defer src="sound.js?v=d947ae7d60"></script>
 <script defer src="scene.js?v=2d259d8a30"></script>
 <script defer src="lab.js?v=86251530d1"></script>
 
 <script defer src="night-line.js?v=5f34bcc1fe"></script>
-<script defer src="motion.js?v=a02e77f3a5"></script>
+<script defer src="motion.js?v=e344926eb3"></script>
 <link rel="stylesheet" href="train-world.css?v=b44d44bf48">
 <script defer src="train-world.js?v=916672d8bf"></script>
 <link rel="stylesheet" href="dial.css?v=f435f2dbad">
 <script defer src="dial.js?v=11dcdd54c4"></script>
+<link rel="stylesheet" href="signal-scroll.css?v=6d8b4be012">
+<script defer src="signal-scroll.js?v=812f2fdb9d"></script>
 </head>
 <body>
 <a class="skip" href="#experience">Skip to experience</a>
@@ -82,6 +84,34 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <div class="station-strip"><div class="strip-inner"><span><i class="pin-dot" aria-hidden="true"></i> JAIPUR, INDIA</span><span class="route-dash" aria-hidden="true"></span><span class="track-name">ROBOTICS &nbsp;/&nbsp; VISION &nbsp;/&nbsp; WEB</span><span class="time-display">IST <time id="jaipur-time">UTC+5:30</time></span></div></div>
 
 <section id="experience" class="field-notes" aria-labelledby="field-title">
+<div class="signal-line" aria-hidden="true"><svg viewBox="0 0 800 72" preserveAspectRatio="xMidYMin slice" focusable="false">
+<defs>
+<g id="pennant-1"><path d="M-13 0H13L0 37Z" fill="#b64637"/><path d="M-11 10h22v4h-22zm0 8h20v3h-20" fill="#ebdaac"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-2"><path d="M-13 0H13L9 34 0 28-9 34Z" fill="#ede4c8"/><circle cy="14" r="6" fill="#cf694a"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-3"><path d="M-13 0H13L9 34 0 28-9 34Z" fill="#d9ac58"/><path d="m-11 7 17 16 4-6L-8 1Z" fill="#2b5355"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-4"><path d="M-13 0H13L0 37Z" fill="#264b50"/><path d="m-7 10 7-6 7 6-7 6z" fill="#efe0bd"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-5"><path d="M-13 0H13L9 34 0 28-9 34Z" fill="#b64637"/><path d="M-11 10h22v4h-22zm0 8h20v3h-20" fill="#ebdaac"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-6"><path d="M-13 0H13L0 37Z" fill="#d9ac58"/><path d="m-11 7 17 16 4-6L-8 1Z" fill="#2b5355"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-7"><path d="M-13 0H13L9 34 0 28-9 34Z" fill="#264b50"/><path d="m-7 10 7-6 7 6-7 6z" fill="#efe0bd"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+<g id="pennant-8"><path d="M-13 0H13L0 37Z" fill="#ede4c8"/><circle cy="14" r="6" fill="#cf694a"/><path d="M1 1 10 3 6 29Z" fill="#2c201b" opacity=".15"/><path d="M-12 2h24" stroke="#594b38" stroke-dasharray="2 2" opacity=".6"/></g>
+</defs>
+<path d="M-20 -4 Q400 47 820 -4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<g transform="translate(25 1.17) rotate(6.25)"><g class="signal-cloth"><use href="#pennant-1"/></g></g>
+<g transform="translate(75 6.23) rotate(5.42)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(125 10.57) rotate(4.58)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(175 14.18) rotate(3.75)"><g class="signal-cloth"><use href="#pennant-4"/></g></g>
+<g transform="translate(225 17.07) rotate(2.92)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(275 19.24) rotate(2.08)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(325 20.69) rotate(1.25)"><g class="signal-cloth"><use href="#pennant-6"/></g></g>
+<g transform="translate(375 21.41) rotate(0.42)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(425 21.41) rotate(-0.42)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(475 20.69) rotate(-1.25)"><g class="signal-cloth"><use href="#pennant-8"/></g></g>
+<g transform="translate(525 19.24) rotate(-2.08)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(575 17.07) rotate(-2.92)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(625 14.18) rotate(-3.75)"><g class="signal-cloth"><use href="#pennant-1"/></g></g>
+<g transform="translate(675 10.57) rotate(-4.58)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(725 6.23) rotate(-5.42)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(775 1.17) rotate(-6.25)"><g class="signal-cloth"><use href="#pennant-4"/></g></g></svg></div>
   <div class="fn-shell">
   <div class="fn-timeline">
     <header class="fn-heading">
@@ -141,6 +171,23 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 </section>
 
 <section id="projects" class="proj-section" aria-labelledby="proj-heading">
+<div class="signal-line" aria-hidden="true"><svg viewBox="0 0 800 72" preserveAspectRatio="xMidYMin slice" focusable="false"><path d="M-20 -4 Q400 47 820 -4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<g transform="translate(25 1.17) rotate(6.25)"><g class="signal-cloth"><use href="#pennant-8"/></g></g>
+<g transform="translate(75 6.23) rotate(5.42)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(125 10.57) rotate(4.58)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(175 14.18) rotate(3.75)"><g class="signal-cloth"><use href="#pennant-1"/></g></g>
+<g transform="translate(225 17.07) rotate(2.92)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(275 19.24) rotate(2.08)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(325 20.69) rotate(1.25)"><g class="signal-cloth"><use href="#pennant-4"/></g></g>
+<g transform="translate(375 21.41) rotate(0.42)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(425 21.41) rotate(-0.42)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(475 20.69) rotate(-1.25)"><g class="signal-cloth"><use href="#pennant-6"/></g></g>
+<g transform="translate(525 19.24) rotate(-2.08)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(575 17.07) rotate(-2.92)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(625 14.18) rotate(-3.75)"><g class="signal-cloth"><use href="#pennant-8"/></g></g>
+<g transform="translate(675 10.57) rotate(-4.58)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(725 6.23) rotate(-5.42)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(775 1.17) rotate(-6.25)"><g class="signal-cloth"><use href="#pennant-1"/></g></g></svg></div>
 <div class="proj-inner"><header class="proj-heading"><div><p class="proj-label">Project archive</p><h2 id="proj-heading">Selected <em>work.</em></h2></div><span class="proj-kanji" lang="ja" aria-hidden="true">制作</span></header>
 <div class="proj-grid"><a class="proj-tile proj-link" href="https://www.weefund.in/" target="_blank" rel="noopener noreferrer" aria-label="WeeFund.in, opens in a new tab">
   <div class="proj-mark"><img src="assets/work/weefund-icon.svg" width="76" height="76" loading="lazy" alt="WeeFund.in logo"><span class="proj-arrow" aria-hidden="true">↗</span></div>
@@ -167,6 +214,23 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <rect width="474" height="272" fill="url(#lab-grid-06)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><ellipse class="lab-ghost" cx="226" cy="213" rx="108" ry="14"/><path class="lab-ghost" d="M96 214H384m-158-20V47m-20 149 44-144"/><ellipse cx="270" cy="166" rx="27" ry="38" class="lab-dark"/><ellipse cx="268" cy="165" rx="20" ry="30" class="lab-machine"/><path class="lab-shade" d="m172 153 25-62 59-13 25 54-16 33-58 21Z"/><path class="lab-machine" d="m173 152 26-64 17-6 20 63-24 34Z"/><path class="lab-machine" d="m198 89 55-20 22 11-59 22Z"/><path class="lab-machine" d="m216 102 59-22 9 53-48 20Z"/><path d="m228 105 37-14 4 20-37 13Zm8 26 29-10m-27 15 28-10"/><path class="lab-dark" d="m193 162 63-30 16 5-62 32Z"/><ellipse cx="189" cy="176" rx="27" ry="37" class="lab-dark"/><ellipse cx="187" cy="176" rx="22" ry="33" class="lab-machine"/><ellipse cx="186" cy="176" rx="11.34" ry="16.65"/><path d="M183 176h6m-3 -3v6"/><ellipse cx="184" cy="174" rx="10" ry="14" class="lab-machine"/><path d="m181 153 5 8m-18 7 8 2m-2 21 6-7m12-16 8-5m-8 19 6 4"/></g><g class="lab-annot"><path d="M164 87q28-30 68-31m-9-4 9 4-8 4M170 231h102m-102-4v8m102-8v8M286 115l28-24h62"/><circle cx="284" cy="117" r="2"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Vehicle control</figcaption></figure><div class="lab-caption"><h3>Self-Balancing RC Car with Traction Control</h3><p>I worked on a self-balancing RC car with traction control. The drawing explores the two control problems in its name: keeping the vehicle upright and managing grip at the wheels.</p></div></div></details></div></div></div></section>
 
 <section class="origin" id="about" aria-labelledby="origin-title">
+<div class="signal-line" aria-hidden="true"><svg viewBox="0 0 800 72" preserveAspectRatio="xMidYMin slice" focusable="false"><path d="M-20 -4 Q400 47 820 -4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+<g transform="translate(25 1.17) rotate(6.25)"><g class="signal-cloth"><use href="#pennant-6"/></g></g>
+<g transform="translate(75 6.23) rotate(5.42)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(125 10.57) rotate(4.58)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(175 14.18) rotate(3.75)"><g class="signal-cloth"><use href="#pennant-8"/></g></g>
+<g transform="translate(225 17.07) rotate(2.92)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(275 19.24) rotate(2.08)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(325 20.69) rotate(1.25)"><g class="signal-cloth"><use href="#pennant-1"/></g></g>
+<g transform="translate(375 21.41) rotate(0.42)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(425 21.41) rotate(-0.42)"><g class="signal-cloth"><use href="#pennant-3"/></g></g>
+<g transform="translate(475 20.69) rotate(-1.25)"><g class="signal-cloth"><use href="#pennant-4"/></g></g>
+<g transform="translate(525 19.24) rotate(-2.08)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(575 17.07) rotate(-2.92)"><g class="signal-cloth"><use href="#pennant-2"/></g></g>
+<g transform="translate(625 14.18) rotate(-3.75)"><g class="signal-cloth"><use href="#pennant-6"/></g></g>
+<g transform="translate(675 10.57) rotate(-4.58)"><g class="signal-cloth"><use href="#pennant-7"/></g></g>
+<g transform="translate(725 6.23) rotate(-5.42)"><g class="signal-cloth"><use href="#pennant-5"/></g></g>
+<g transform="translate(775 1.17) rotate(-6.25)"><g class="signal-cloth"><use href="#pennant-8"/></g></g></svg></div>
 <div class="origin-wrap">
 <div class="origin-text"><p class="section-kicker"><span></span> ABOUT ME</p><h2 id="origin-title">Hi, I’m Dhairya<span>.</span></h2>
 <p>At Manipal University Jaipur, I study Electronics and Communication Engineering. I like projects that give me something to test with my own hands. A line-following robot has a wonderfully blunt way of telling you when your code is wrong.</p>

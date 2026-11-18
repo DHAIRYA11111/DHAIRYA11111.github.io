@@ -1,0 +1,28 @@
+/* Warm stock and fine printed dots from vintage railway posters. */
+.field-notes,.ds-lab {
+  background-image:radial-gradient(#7350291b .65px, transparent .85px),
+    linear-gradient(113deg,#dab87b24,transparent 55%);
+  background-size:4px 4px,100% 100%;
+}
+.city-art img {filter:sepia(.19) saturate(.89)}
+.signal-line {height:clamp(48px,6.8vw,94px);overflow:hidden;pointer-events:none;color:#70634f}
+.proj-section .signal-line,.origin .signal-line {color:#a39477}
+.signal-line svg {display:block;width:100%;height:100%}
+.signal-cloth {transform-origin:0 0}
+@media screen and (prefers-reduced-motion:no-preference) {
+  html.signal-motion .press-entry {
+    opacity:calc(.35 + var(--print-progress,1)*.65);
+    translate:0 calc((1 - var(--print-progress,1))*26px);
+    scale:calc(.965 + var(--print-progress,1)*.035);
+    transform-origin:left center;
+  }
+  html.signal-motion .press-entry:focus-within {opacity:1;translate:none;scale:1}
+  html.signal-motion .letterpress-word {
+    --ink:clamp(0,(var(--print-progress,0) - var(--word-start))*2.5,1);
+    opacity:calc(.12 + var(--ink)*.88);
+    translate:0 calc((1 - var(--ink))*.48em);
+    rotate:calc((var(--ink) - 1)*3deg);
+  }
+}
+.letterpress-word {display:inline-block}
+@media print {.signal-line{display:none}}
