@@ -15,22 +15,25 @@
 <meta property="og:image:alt" content="A night train crossing an illustrated Japanese city under a vermilion sun.">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/barlow.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="night-line.css?v=ce6830abda">
+<link rel="stylesheet" href="work.css?v=cde26b7839">
+<link rel="stylesheet" href="lab.css?v=40492061e1">
+<link rel="stylesheet" href="notes.css?v=8bdb27799c">
+<link rel="stylesheet" href="motion.css?v=af947f0d1f">
+<script defer src="sound.js?v=41ee675790"></script>
+<script defer src="scene.js?v=2d259d8a30"></script>
+<script defer src="lab.js?v=86251530d1"></script>
 
-<link rel="stylesheet" href="lab.css">
-
-<script defer src="scene.js"></script>
-<script defer src="lab.js"></script>
-
-<script defer src="script.js"></script>
+<script defer src="night-line.js?v=5f34bcc1fe"></script>
+<script defer src="motion.js?v=a02e77f3a5"></script>
 </head>
 <body>
-<a class="skip" href="#projects">Skip to projects</a>
+<a class="skip" href="#experience">Skip to experience</a>
 <header class="mast">
 <div class="mast-inner">
 <a class="wordmark" href="#home" aria-label="Dhairya Sansi, home"><img src="assets/mark.svg" alt="" width="34" height="34"><span>Dhairya Sansi<span class="brand-dot">.</span></span></a>
 <nav aria-label="Main" class="main-nav"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#lab">Workbench</a><a href="#about">Story</a><a href="#contact">Contact</a></nav>
-<a class="resume" href="assets/dhairya-resume.pdf" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
+<a class="resume" href="assets/dhairya-resume.pdf?v=2026-11-18" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
 </div>
 </header>
 <main>
@@ -44,20 +47,83 @@
 <p class="hello">Hi, I’m</p>
 <h1 id="hero-title" aria-label="Dhairya Sansi"><span>DHAIRYA</span><span>SANSI<b>.</b></span></h1>
 <p class="hero-intro">ECE undergraduate at <strong>Manipal University Jaipur.</strong> I build robots, develop computer vision systems, and make things for the web.</p>
-<div class="hero-actions"><a class="action-hot" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a><a class="story-link" href="#about">My story <span aria-hidden="true">↗</span></a></div>
+<div class="hero-actions"><a class="action-hot" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a><a class="story-link" href="#experience">My experience <span aria-hidden="true">↗</span></a></div>
 </div>
 </div>
 <div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
-<button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+<div class="scene-controls"><button type="button" id="station-sound" class="station-sound" aria-pressed="false" aria-label="Japanese-inspired station chimes" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Sound off</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
 </section>
 <div class="station-strip"><div class="strip-inner"><span><i class="pin-dot" aria-hidden="true"></i> JAIPUR, INDIA</span><span class="route-dash" aria-hidden="true"></span><span class="track-name">ROBOTICS &nbsp;/&nbsp; VISION &nbsp;/&nbsp; WEB</span><span class="time-display">IST <time id="jaipur-time">UTC+5:30</time></span></div></div>
 
-<section id="experience" class="first-work"><div><p class="section-kicker"><span></span> INTERNSHIPS &amp; LEADERSHIP</p><h2>Experience<span>.</span></h2>
-<div class="experience-start"><article><p>JUN–AUG 2026</p><h3>IoT &amp; Hardware Intern · Abilities India</h3><p>I developed a computer vision workflow to identify cracks and surface flaws in piston components. I also built and tested a Raspberry Pi line-following robot designed to transport up to 150 kg.</p></article>
-<article><p>ACM MUJ</p><h3>Team Head · Motor-driver development</h3><p>I led the team through circuit architecture, schematics, connection mapping and hardware–software integration. I also won a RoboSoccer competition at LNMIIT, Jaipur.</p></article>
-<article><p>DEC 2025–JAN 2026</p><h3>Hall-effect sensor research</h3><p>Working with Prof. Ashutosh Kumar, I studied how Hall-effect sensors respond to magnetic fields and how their device characteristics affect electronic sensing applications.</p></article>
-<article><p>INDEPENDENT</p><h3>Freelance Web &amp; IoT Developer</h3><p>I’ve delivered more than 20 websites and technical projects across web development and IoT, from client websites to connected hardware and automation.</p></article></div></div></section>
-<section id="projects" class="first-work"><div><p class="section-kicker"><span></span> SELECTED PROJECTS</p><h2>Out on the web<span>.</span></h2><div class="first-work-list"><a href="https://weefundd.vercel.app/"><img loading="lazy" alt="" src="assets/work/weefund-icon.svg"><strong>WeeFund.in ↗</strong><p>A rewards-based crowdfunding platform for independent projects.</p></a><a href="https://pixel-play-arcade.vercel.app/"><img loading="lazy" alt="" src="assets/work/arcade-screen.webp"><strong>Pixel // Play ↗</strong><p>A browser arcade.</p></a><a href="https://lifestyle-tracker-zeta.vercel.app/"><img loading="lazy" alt="" src="assets/work/too-drunk.webp"><strong>too drunk ↗</strong><p>A personal lifestyle tracker.</p></a></div></div></section>
+<section id="experience" class="field-notes" aria-labelledby="field-title">
+  <div class="fn-shell">
+    <header class="fn-heading">
+      <div><p class="fn-kicker">Field notes <span lang="ja">／ 現場記録</span></p><h2 id="field-title">Experience<span>.</span></h2></div>
+      <div class="fn-meter" aria-hidden="true"><span class="fn-meter-track"><i></i></span><span class="fn-meter-number">01 / 06</span></div>
+      <a class="fn-jump" href="#skills">Jump to skills <span aria-hidden="true">↓</span></a>
+    </header>
+    <ol class="fn-records">
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>Jun — Aug 2026</span></div>
+        <article><p class="fn-org">Abilities India Pvt. Ltd.</p><h3>IoT &amp; Hardware Intern</h3>
+          <p>I built a Raspberry Pi line-following robot designed to move payloads of up to 150 kg. I helped prototype, integrate and test the hardware. On a separate project, I developed a computer vision workflow to flag cracks and surface flaws in piston components.</p>
+        </article>
+      </li>
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>Dec 2025 — Jan 2026</span></div>
+        <article><p class="fn-org">Hall Effect Sensor Research · Prof. Ashutosh Kumar</p><h3>Summer Research Intern</h3>
+          <p>I studied how Hall-effect sensors respond to magnetic fields, how their device characteristics affect that response, and where engineers can use them in electronic sensing systems.</p>
+        </article>
+      </li>
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>Student leadership</span></div>
+        <article><p class="fn-org">ACM MUJ · Manipal University Jaipur</p><h3>Team Head</h3>
+          <p>I led motor-driver development from circuit architecture and schematics to connection maps, documentation and hardware–software integration. We also won a RoboSoccer competition at LNMIIT, Jaipur.</p>
+        </article>
+      </li>
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>Independent practice</span></div>
+        <article><p class="fn-org">Freelance · Client projects</p><h3>Web &amp; IoT Project Developer</h3>
+          <p>I’ve delivered 20+ websites and technical projects across web development and IoT. My work ranges from shaping a client’s requirements into a working website to connecting hardware and software for automation.</p>
+        </article>
+      </li>
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>Six-month role</span></div>
+        <article><p class="fn-org">Bread &amp; Butter</p><h3>Campus Ambassador</h3>
+          <p>I represented the brand on campus, managed social content and coordinated outreach events. A lot of that work happened face to face, talking to students and bringing them into activities.</p>
+        </article>
+      </li>
+      <li class="fn-record">
+        <div class="fn-period"><span class="fn-station" aria-hidden="true"></span><span>2026 event committees</span></div>
+        <article><p class="fn-org">Oneiros ’26 · Tech-Ideate ’26 · Elicit ’26</p><h3>Committee Member</h3>
+          <p>I worked with the core committees to plan and run university festivals and technical events, helping coordinate the people and logistics behind them.</p>
+        </article>
+      </li>
+    </ol>
+    <section id="skills" class="fn-skills" aria-labelledby="fn-skill-heading">
+      <header><p class="fn-kicker">On my workbench</p><h3 id="fn-skill-heading">Skills<span>.</span></h3></header>
+      <dl>
+        <div><dt>Embedded electronics</dt><dd>Raspberry Pi, Arduino, microcontrollers, circuit design, schematics, motor drivers and sensor integration.</dd></div>
+        <div><dt>Robotics &amp; IoT</dt><dd>Line following, robot control, RoboSoccer, drones, connected hardware and automation.</dd></div>
+        <div><dt>Computer vision</dt><dd>Python, OpenCV, YOLO, Roboflow, object detection and image-based defect inspection.</dd></div>
+        <div><dt>Web engineering</dt><dd>JavaScript, React, Node.js, MongoDB, FastAPI, HTML and CSS.</dd></div>
+      </dl>
+    </section>
+  </div>
+</section>
+
+<section id="projects" class="proj-section" aria-labelledby="proj-heading">
+<div class="proj-inner"><header class="proj-heading"><div><p class="proj-label">Project archive</p><h2 id="proj-heading">Selected <em>work.</em></h2></div><span class="proj-kanji" lang="ja" aria-hidden="true">制作</span></header>
+<div class="proj-grid"><a class="proj-tile proj-link" href="https://www.weefund.in/" target="_blank" rel="noopener noreferrer" aria-label="WeeFund.in, opens in a new tab">
+  <div class="proj-mark"><img src="assets/work/weefund-icon.svg" width="76" height="76" loading="lazy" alt="WeeFund.in logo"><span class="proj-arrow" aria-hidden="true">↗</span></div>
+  <p class="proj-type">Crowdfunding</p><h3>WeeFund.in</h3><p class="proj-blurb">A place to back independent ideas. Creators share plans and rewards, and backers can follow a project or pledge in rupees.</p><span class="proj-visit">Explore WeeFund.in</span></a>
+<a class="proj-tile proj-link" href="https://pixel-play-arcade.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Pixel//Play, opens in a new tab">
+  <div class="proj-mark"><img src="assets/work/pixel-play-mark.svg" width="76" height="76" loading="lazy" alt="Pixel//Play logo"><span class="proj-arrow" aria-hidden="true">↗</span></div>
+  <p class="proj-type">Browser games</p><h3>Pixel<span>//</span>Play</h3><p class="proj-blurb">Six arcade games that run in the browser. Pick a cabinet, start a run, and chase the high score saved on your device.</p><span class="proj-visit">Enter the arcade</span></a>
+<a class="proj-tile proj-link" href="https://lifestyle-tracker-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Too Drunk, opens in a new tab">
+  <div class="proj-mark"><img src="assets/work/too-drunk.webp" width="76" height="76" loading="lazy" alt="Too Drunk logo"><span class="proj-arrow" aria-hidden="true">↗</span></div>
+  <p class="proj-type">Lifestyle tracker</p><h3>Too Drunk</h3><p class="proj-blurb">A private log for drinks, cigarettes, and spending. Daily entries build into a visual history of personal habits.</p><span class="proj-visit">Open the tracker</span></a></div></div></section>
+
 <section id="lab" class="ds-lab" aria-labelledby="lab-title"><div class="lab-inner"><header class="lab-header"><span class="lab-rule" aria-hidden="true"></span><h2 id="lab-title">On the <em>workbench.</em></h2><span class="lab-rule" aria-hidden="true"></span></header><div class="lab-workspace"><div class="lab-select" role="tablist" aria-label="Robotics projects" aria-orientation="vertical" hidden><button type="button" role="tab" id="lab-tab-01" aria-controls="lab-panel-01" aria-selected="true" tabindex="0"><span aria-hidden="true">01</span><strong>Robotic Arm</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-02" aria-controls="lab-panel-02" aria-selected="false" tabindex="-1"><span aria-hidden="true">02</span><strong>RoboWar Bot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-03" aria-controls="lab-panel-03" aria-selected="false" tabindex="-1"><span aria-hidden="true">03</span><strong>RoboSoccer Bot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-04" aria-controls="lab-panel-04" aria-selected="false" tabindex="-1"><span aria-hidden="true">04</span><strong>ML Garbage-Detection Drone</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-05" aria-controls="lab-panel-05" aria-selected="false" tabindex="-1"><span aria-hidden="true">05</span><strong>Line-Following Robot</strong><b aria-hidden="true">↗</b></button><button type="button" role="tab" id="lab-tab-06" aria-controls="lab-panel-06" aria-selected="false" tabindex="-1"><span aria-hidden="true">06</span><strong>Self-Balancing RC Car with Traction Control</strong><b aria-hidden="true">↗</b></button></div><div class="lab-panels"><details class="lab-card" id="lab-panel-01" open><summary>Robotic Arm</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 01</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
 <defs><pattern id="lab-grid-01" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#777369" opacity=".52"/></pattern><pattern id="lab-hatch-01" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><path d="M0 0v4" stroke="#242930" stroke-width=".9"/></pattern></defs>
 <rect width="474" height="272" fill="url(#lab-grid-01)"/><g class="lab-reg"><path d="M16 34V18h16m410 0h16v16M16 237v16h16m410 0h16v-16"/><path d="M32 134h8m-4 -4v8"/><path d="M434 134h8m-4 -4v8"/></g><g class="lab-pencil"><path class="lab-ghost" d="M63 218H401M127 227l125-170m-66 103Q197 93 248 66q53-28 115-4"/><ellipse cx="167" cy="218" rx="69" ry="11" class="lab-machine"/><path class="lab-shade" d="M98 217v7c8 17 129 17 138-1v-6c-13 15-124 17-138 0Z"/><ellipse cx="167" cy="210" rx="46" ry="8" class="lab-machine"/><path class="lab-machine" d="M134 207l9-35 41-4 17 38q-30 10-67 1Z"/><path class="lab-shade" d="M158 169l49-88 14 3-43 91Z"/><path class="lab-machine" d="M143 166l53-96q7-11 17-7l14 10q5 4 2 12l-54 95Z"/><path d="M159 152l41-71 13 7-41 70Z"/><path class="lab-machine" d="M217 62l90 24 13 13-5 12-105-24Z"/><path d="M231 73l67 19m-61-14 49 14"/><path class="lab-shade" d="M311 89l28 5 1 14-27 4-8-10Z"/><path class="lab-machine" d="M336 92l18-13 22 4 8 12-7 3-8-9-15-2-12 12Zm2 16 18 12 19-2 9-10-6-5-9 9-12 2-13-10Z"/><circle cx="163" cy="172" r="18" class="lab-machine"/><circle cx="163" cy="172" r="10.26"/><circle cx="163" cy="172" r="3.06" class="lab-pin"/><circle cx="212" cy="76" r="17" class="lab-machine"/><circle cx="212" cy="76" r="9.69"/><circle cx="212" cy="76" r="2.89" class="lab-pin"/><circle cx="308" cy="99" r="12" class="lab-machine"/><circle cx="308" cy="99" r="6.84"/><circle cx="308" cy="99" r="2.04" class="lab-pin"/></g><g class="lab-annot"><path d="M196 116q-23-11-37-7m6-4-6 4 7 3M288 55l20-18h45m-47 3 2-3 3-1M92 241h147m-147-5v10m147-10v10"/><circle cx="382" cy="103" r="10" stroke-dasharray="2 4"/></g></svg><figcaption>Concept sketch <span aria-hidden="true">/</span> Articulated motion</figcaption></figure><div class="lab-caption"><h3>Robotic Arm</h3><p>I worked on a robotic arm as part of my robotics projects. The sketch traces the idea from the base to the gripper, where motion at each joint changes the reach of the arm.</p></div></div></details><details class="lab-card" id="lab-panel-02"><summary>RoboWar Bot</summary><div class="lab-card-content"><figure><div class="lab-plate-head"><span>DS / LAB</span><span>FIG. 02</span></div><svg viewBox="0 0 474 272" fill="none" aria-hidden="true" focusable="false" class="lab-drawing">
@@ -77,10 +143,9 @@
 <div class="origin-text"><p class="section-kicker"><span></span> ABOUT ME</p><h2 id="origin-title">Hi, I’m Dhairya<span>.</span></h2>
 <p>At Manipal University Jaipur, I study Electronics and Communication Engineering. I like projects that give me something to test with my own hands. A line-following robot has a wonderfully blunt way of telling you when your code is wrong.</p>
 <p>That’s what connects my work on motor drivers, piston inspection and websites. I get to follow an idea from a sketch to the part where someone can actually use it.</p>
-<a class="story-link" href="assets/dhairya-resume.pdf" target="_blank" rel="noopener">Read my résumé <span aria-hidden="true">↗</span></a></div>
+<a class="story-link" href="assets/dhairya-resume.pdf?v=2026-11-18" target="_blank" rel="noopener">Read my résumé <span aria-hidden="true">↗</span></a></div>
 <aside class="rail-ticket" aria-label="Education"><div class="ticket-head"><span>MANIPAL UNIVERSITY JAIPUR</span><span lang="ja" aria-hidden="true">乗車券</span></div><div class="ticket-main"><span class="ticket-program">B.TECH</span><strong>ECE</strong><span class="ticket-city">JAIPUR <i aria-hidden="true">↗</i></span></div><div class="ticket-end"><span>ENROLLED <b>AUG 2025</b></span><span>EXPECTED GRADUATION <b>2029</b></span><i class="bars" aria-hidden="true"></i></div></aside>
 </div></section>
-
 
 <section class="terminus" id="contact" aria-labelledby="contact-title"><div class="contact-wrap"><div><p class="section-kicker"><span></span> CONTACT</p><h2 id="contact-title" aria-label="Let’s build something">Let’s build<br><em>something.</em></h2></div><div class="contact-actions"><p>Have a robotics project, a web idea, or a good engineering problem? I’d love to hear it.</p><div class="mail-group"><a class="mail-link" href="mailto:sansidhairya11@gmail.com">sansidhairya11@gmail.com <span aria-hidden="true">↗</span></a><button id="copy-email" type="button" hidden>Copy email</button><span class="visually-hidden" role="status" id="copy-status"></span></div><div class="socials"><a href="https://github.com/DHAIRYA11111">GitHub ↗</a><a href="https://www.linkedin.com/in/dhairya-s-31777b242/">LinkedIn ↗</a><a href="tel:+919870477844">Phone ↗</a></div></div></div></section>
 </main><footer class="endbar"><div><span>© 2026 Dhairya Sansi</span><a href="#home">Back to top ↑</a></div></footer>

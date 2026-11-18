@@ -1,0 +1,28 @@
+/* Native scroll drives two word lines in opposite directions. Each glyph has
+   its own transform for entry, leaving the word's scroll transform independent. */
+#hero-title .motion-word{display:block;transform:translate3d(var(--word-x,0px),var(--word-y,0px),0)}
+#hero-title .motion-char{display:inline-block;font:inherit;font-style:normal;vertical-align:baseline;white-space:pre;transform-origin:35% 90%}
+#hero-title .motion-name-enter .motion-char{animation:ds-glyph-arrival .69s cubic-bezier(.14,.77,.22,1) both;animation-delay:calc(var(--glyph-index,0)*25ms)}
+@keyframes ds-glyph-arrival{
+  0%{opacity:.16;transform:translate3d(.10em,.43em,0) rotate(4deg) scaleY(.75)}
+  65%{opacity:1}
+  100%{opacity:1;transform:translate3d(0,0,0) rotate(0) scaleY(1)}
+}
+.ds-scroll-beat{animation:ds-station-entry .65s cubic-bezier(.17,.81,.23,1) both;animation-delay:var(--beat-delay,0ms)}
+@keyframes ds-station-entry{
+  0%{opacity:.57;translate:0 17px}
+  100%{opacity:1;translate:0 0}
+}
+.ds-arrival-rule{animation:ds-rule-entry .72s cubic-bezier(.16,.78,.2,1) both;transform-origin:left center}
+@keyframes ds-rule-entry{0%{scale:.1 1}100%{scale:1 1}}
+.ds-pointer-track{pointer-events:none;position:fixed;z-index:1000;top:0;left:0;width:28px;height:28px;overflow:visible;opacity:0;color:#ff7257;transition:opacity .15s;contain:layout style;transform:translate3d(-100px,-100px,0)}
+.ds-pointer-track[data-visible]{opacity:.92}
+.ds-pointer-track path{fill:none;stroke:currentColor;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.ds-pointer-track .ds-reticle{opacity:0;transition:opacity .15s}
+.ds-pointer-track[data-link] .ds-reticle{opacity:1}
+.ds-pointer-track .ds-tail{stroke-linecap:round}
+@media (pointer:coarse),(prefers-reduced-motion:reduce){.ds-pointer-track{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+#hero-title .motion-word{transform:none!important}
+#hero-title .motion-char,.ds-scroll-beat,.ds-arrival-rule{animation:none!important}
+}

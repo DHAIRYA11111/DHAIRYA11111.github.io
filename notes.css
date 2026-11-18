@@ -1,0 +1,40 @@
+.field-notes{--fn-ink:#10131c;--fn-paper:#f5efdf;--fn-red:#c03627;--fn-muted:#504e49;background:var(--fn-paper);color:var(--fn-ink);scroll-margin-top:6rem;text-align:left;position:relative}
+.field-notes *{box-sizing:border-box}
+.fn-shell{max-width:1280px;margin-inline:auto;padding:clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,5rem)}
+.field-notes .fn-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;border-bottom:2px solid var(--fn-ink);padding-bottom:1.3rem}
+.field-notes .fn-kicker,.fn-org,.fn-period,.fn-jump{font-family:"Space Mono",monospace}
+.field-notes .fn-kicker{margin:0 0 .45rem;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fn-muted)}
+.field-notes .fn-heading h2,.fn-skills header h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:clamp(4.2rem,9vw,8.3rem);line-height:.92;letter-spacing:-.04em;font-weight:700;margin:0;color:var(--fn-ink)}
+.fn-heading h2 span,.fn-skills header h3 span{color:var(--fn-red)}
+.fn-jump{display:inline-flex;align-items:center;gap:.8em;padding:.5rem 0;color:var(--fn-ink);font-size:.8rem;white-space:nowrap;text-decoration:underline;text-underline-offset:.4em}
+.fn-jump:hover,.fn-jump:focus-visible{color:var(--fn-red)}
+.fn-records{list-style:none;margin:0;padding:0}
+.fn-record{display:grid;grid-template-columns:minmax(12rem,30%) 1fr;position:relative;padding:clamp(1.55rem,3vw,2.5rem) 0;border-bottom:1px solid #10131c35}
+.fn-period{display:flex;align-items:baseline;gap:1.1rem;font-size:.75rem;color:var(--fn-muted);position:relative;padding-right:1rem;line-height:1.5}
+.fn-station{position:relative;z-index:1;flex:none;width:.65rem;height:.65rem;border:2px solid var(--fn-red);border-radius:50%;background:var(--fn-paper)}
+.fn-record::before{content:"";position:absolute;top:0;bottom:-1px;left:.25rem;width:2px;background:#bd6f615c}
+.fn-record:first-child::before{top:clamp(1.8rem,3.3vw,2.8rem)}
+.fn-record:last-child::before{bottom:auto;height:clamp(1.95rem,3.6vw,3rem)}
+.fn-record .fn-org{margin:0 0 .35rem;font-size:clamp(.72rem,1vw,.86rem);color:var(--fn-red);line-height:1.5;font-weight:700}
+.field-notes .fn-record h3,.field-notes .fn-skills dt{font-family:"Space Grotesk",Arial,sans-serif;color:var(--fn-ink);letter-spacing:-.035em;font-weight:700;line-height:1.16}
+.field-notes .fn-record h3{font-size:clamp(1.5rem,2.7vw,2.45rem);margin:0 0 .65rem}
+.field-notes .fn-record article>p:last-child,.field-notes .fn-skills dd{font:400 clamp(.96rem,1.22vw,1.08rem)/1.63 "Space Grotesk",Arial,sans-serif;color:#393b42;max-width:64ch;margin:0}
+.field-notes .fn-skills{color:var(--fn-ink);padding-top:clamp(3.4rem,7vw,6.5rem);scroll-margin-top:6rem}
+.fn-skills header h3{font-size:clamp(3.8rem,7vw,6rem)}
+.fn-skills dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.65rem 3rem;margin:2rem 0 0}
+.fn-skills dl>div{border-top:1px solid #10131c55;padding-top:.9rem}
+.field-notes .fn-skills dt{font-size:1.2rem;margin:.1rem 0 .4rem}
+@media(max-width:680px){.fn-record{grid-template-columns:minmax(0,1fr);gap:.65rem;padding-left:1.45rem}.fn-period{gap:0}.fn-station{position:absolute;left:-1.45rem;top:.24rem}.fn-skills dl{grid-template-columns:1fr;gap:1.15rem}.fn-jump{font-size:.7rem}.field-notes .fn-heading{align-items:flex-start;flex-wrap:wrap}.fn-record .fn-org{font-size:.71rem}}
+.fn-meter{display:none}
+@media(min-width:1024px){.fn-shell{display:grid;grid-template-columns:minmax(225px,28%) minmax(0,1fr);column-gap:clamp(32px,5vw,85px);max-width:1570px;padding-inline:var(--margin)}
+.field-notes .fn-heading{align-self:start;position:sticky;top:105px;display:block;border-bottom:0;border-top:2px solid var(--fn-ink);padding:18px 0 0}
+.field-notes .fn-heading h2{font-size:clamp(4.4rem,6.35vw,7.1rem)}
+.fn-records{border-top:2px solid var(--fn-ink)}
+.fn-record{grid-template-columns:minmax(106px,25%) minmax(0,1fr)}
+.fn-skills{grid-column:1/-1}
+.fn-meter{display:flex;align-items:center;gap:13px;margin:24px 0 12px;font:400 .64rem var(--mono);color:#62574b}
+.fn-meter-track{height:3px;background:#c8bcad;width:min(180px,67%);display:block}
+.fn-meter-track i{display:block;background:var(--fn-red);width:100%;height:100%;transform-origin:left;transform:scaleX(var(--field-progress,.1667));transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+}
+.fn-record[data-passing] .fn-station{background:var(--fn-red);box-shadow:0 0 0 4px #c0362717}
+@media(prefers-reduced-motion:no-preference){.fn-record[data-passing] .fn-station{transition:background .3s,box-shadow .3s}}
