@@ -11,7 +11,6 @@
 
   const button = document.querySelector('#pause-scene');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const hero = document.querySelector('.city-hero');
   const mast = document.querySelector('.mast');
   let motionPaused = false;
   let paintFrame = 0;
@@ -21,9 +20,7 @@
     const distance = document.documentElement.scrollHeight - innerHeight;
     const progress = distance > 0 ? Math.min(top / distance, 1) : 0;
     mast.style.setProperty('--journey-progress',progress.toFixed(4));
-    if (top < hero.offsetHeight + 100 && !reduced.matches && !motionPaused) {
-      hero.style.setProperty('--sky-drift',Math.min(top * .04, 12) + 'px');
-    }
+
   }
   function queueScroll() {
     if (!paintFrame) paintFrame = requestAnimationFrame(updateScroll);

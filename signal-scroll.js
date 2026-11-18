@@ -18,12 +18,22 @@
     name.replaceChildren(fragment);
   }
 
-  const elements = document.querySelectorAll(
-    '.fn-heading>div:first-child,.fn-period,.fn-record article>p:last-child,.fn-skills header,.fn-skills dl>div,' +
+  const elements = [...document.querySelectorAll(
+    '.hero-line,.hello,.hero-intro,.hero-actions,.strip-inner>span,.fn-meter,.fn-jump,.fn-heading>div:first-child,.fn-period,.fn-record article>p:last-child,.fn-skills header,.fn-skills dl>div,' +
     '.proj-heading,.proj-tile,.lab-header,.lab-select button,.lab-card-content figure,.lab-caption,' +
-    '.origin-text>*,.rail-ticket,.terminus h2,.terminus .section-kicker,.contact-actions>*,.endbar>div'
-  );
-  for (const el of elements) el.classList.add('press-entry');
+    '.origin-text>*,.rail-ticket,.terminus h2,.terminus .section-kicker,.contact-actions>*,.endbar>div>*'
+  )];
+  for (const [index,el] of [...elements,...names].entries()) {
+    if (index < elements.length) el.classList.add('press-entry');
+    el.style.setProperty('--slide-side',index % 2 ? 1 : -1);
+  }
+  const projects = document.querySelector('#projects');
+  const gallery = projects.querySelector('.proj-inner');
+  const logos = [...gallery.querySelectorAll('.proj-tile')];
+  function sizeGallery() {
+    projects.classList.toggle('pin-gallery',gallery.offsetHeight + 155 < innerHeight);
+    queue();
+  }
   const bands = [...document.querySelectorAll('.signal-line')];
   const cloth = new Map(bands.map(band => [band,[...band.querySelectorAll('.signal-cloth')]]));
   const visible = new Set();
@@ -34,6 +44,8 @@
     const height = document.documentElement.clientHeight;
     const atEnd = scrollY + height >= document.documentElement.scrollHeight - 2;
     const positions = [...visible].map(el => [el,el.getBoundingClientRect().top]);
+    const galleryPinned = projects.classList.contains('pin-gallery');
+    const galleryTop = projects.getBoundingClientRect().top;
     for (const [el,top] of positions) {
       if (cloth.has(el)) {
         cloth.get(el).forEach((flag,i) => {
@@ -43,7 +55,11 @@
             (.93+.07*Math.cos(phase)).toFixed(3)+' '+(.95+.05*wave).toFixed(3)+')');
         });
       } else {
-        const progress = atEnd ? 1 : Math.min(1,Math.max(0,(height*.98-top)/(height*.34)));
+        const logoIndex = logos.indexOf(el);
+        const travel = galleryPinned && logoIndex >= 0
+          ? (.60 - galleryTop / height - logoIndex * .21) / .38
+          : (height * .98 - top) / (height * .31);
+        const progress = atEnd ? 1 : Math.min(1,Math.max(0,travel));
         el.style.setProperty('--print-progress',progress.toFixed(4));
       }
     }
@@ -58,7 +74,7 @@
       }
     }
     queue();
-  },{rootMargin:'160px 0px'});
+  },{rootMargin:'200px 65%'});
   [...names,...elements,...bands].forEach(el=>observer.observe(el));
   function sync() {
     const enabled = !reduced.matches && pause?.getAttribute('aria-pressed')!=='true';
@@ -69,6 +85,8 @@
   reduced.addEventListener('change',sync);
   new MutationObserver(sync).observe(pause,{attributes:true,attributeFilter:['aria-pressed']});
   addEventListener('scroll',queue,{passive:true});
-  addEventListener('resize',queue,{passive:true});
+  new ResizeObserver(sizeGallery).observe(gallery);
+  addEventListener('resize',sizeGallery,{passive:true});
+  sizeGallery();
   sync();
 })();

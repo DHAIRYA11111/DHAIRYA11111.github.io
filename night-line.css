@@ -101,7 +101,6 @@ img{max-width:100%;display:block}
 @media(max-width:360px){.hero-actions{gap:12px}.hero-actions a{font-size:.82rem}.city-hero{min-height:570px}.main-nav a{font-size:.76rem}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 .mast:after{content:"";position:absolute;bottom:-1px;left:0;height:2px;width:100%;background:var(--red);transform-origin:left;transform:scaleX(var(--journey-progress,0));pointer-events:none}
-@media(min-width:641px) and (prefers-reduced-motion:no-preference){.city-art{transform:translateY(var(--sky-drift,0px)) scale(1.035)}}
 @media(prefers-reduced-motion:no-preference){.rail-ticket{transition:transform .4s ease,box-shadow .4s ease}.rail-ticket:hover{transform:rotate(0deg) translateY(-3px);box-shadow:5px 10px 0 #0a0d14}}
 .scene-controls{position:absolute;right:var(--margin);bottom:19px;display:flex;align-items:center;gap:7px}
 .scene-controls .pause-scene{position:static}

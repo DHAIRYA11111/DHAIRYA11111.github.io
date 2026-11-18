@@ -10,18 +10,19 @@
 .signal-line svg {display:block;width:100%;height:100%}
 .signal-cloth {transform-origin:0 0}
 @media screen and (prefers-reduced-motion:no-preference) {
+  html.signal-motion main {overflow-x:clip}
+  html.signal-motion .pin-gallery {min-height:145svh}
+  html.signal-motion .pin-gallery .proj-inner {position:sticky;top:max(88px,12svh)}
   html.signal-motion .press-entry {
-    opacity:calc(.35 + var(--print-progress,1)*.65);
-    translate:0 calc((1 - var(--print-progress,1))*26px);
-    scale:calc(.965 + var(--print-progress,1)*.035);
-    transform-origin:left center;
+    --remaining:calc(1 - var(--print-progress,1));
+    opacity:clamp(0,calc(var(--print-progress,1) * 1.5),1);
+    translate:calc(var(--slide-side) * var(--remaining) * var(--remaining) * clamp(88px,24vw,385px)) 0;
   }
-  html.signal-motion .press-entry:focus-within {opacity:1;translate:none;scale:1}
+  html.signal-motion .press-entry:focus-within {opacity:1;translate:none}
   html.signal-motion .letterpress-word {
-    --ink:clamp(0,(var(--print-progress,0) - var(--word-start))*2.5,1);
-    opacity:calc(.12 + var(--ink)*.88);
-    translate:0 calc((1 - var(--ink))*.48em);
-    rotate:calc((var(--ink) - 1)*3deg);
+    --ink:clamp(0,(var(--print-progress,1) - var(--word-start))*2.5,1);
+    opacity:var(--ink);
+    translate:calc((1 - var(--ink)) * var(--slide-side) * clamp(44px,10vw,135px)) 0;
   }
 }
 .letterpress-word {display:inline-block}
