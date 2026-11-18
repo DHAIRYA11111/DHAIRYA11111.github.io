@@ -26,7 +26,8 @@
 .field-notes .fn-skills dt{font-size:1.2rem;margin:.1rem 0 .4rem}
 @media(max-width:680px){.fn-record{grid-template-columns:minmax(0,1fr);gap:.65rem;padding-left:1.45rem}.fn-period{gap:0}.fn-station{position:absolute;left:-1.45rem;top:.24rem}.fn-skills dl{grid-template-columns:1fr;gap:1.15rem}.fn-jump{font-size:.7rem}.field-notes .fn-heading{align-items:flex-start;flex-wrap:wrap}.fn-record .fn-org{font-size:.71rem}}
 .fn-meter{display:none}
-@media(min-width:1024px){.fn-shell{display:grid;grid-template-columns:minmax(225px,28%) minmax(0,1fr);column-gap:clamp(32px,5vw,85px);max-width:1570px;padding-inline:var(--margin)}
+@media(min-width:1024px){.fn-shell{max-width:1570px;padding-inline:var(--margin)}
+.fn-timeline{display:grid;grid-template-columns:minmax(225px,28%) minmax(0,1fr);column-gap:clamp(32px,5vw,85px)}
 .field-notes .fn-heading{align-self:start;position:sticky;top:105px;display:block;border-bottom:0;border-top:2px solid var(--fn-ink);padding:18px 0 0}
 .field-notes .fn-heading h2{font-size:clamp(4.4rem,6.35vw,7.1rem)}
 .fn-records{border-top:2px solid var(--fn-ink)}
