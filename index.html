@@ -34,6 +34,8 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <script defer src="motion.js?v=a02e77f3a5"></script>
 <link rel="stylesheet" href="train-world.css?v=b44d44bf48">
 <script defer src="train-world.js?v=916672d8bf"></script>
+<link rel="stylesheet" href="dial.css?v=f435f2dbad">
+<script defer src="dial.js?v=11dcdd54c4"></script>
 </head>
 <body>
 <a class="skip" href="#experience">Skip to experience</a>
@@ -57,6 +59,22 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <p class="hero-intro">ECE undergraduate at <strong>Manipal University Jaipur.</strong> I build robots, develop computer vision systems, and make things for the web.</p>
 <div class="hero-actions"><a class="action-hot" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a><a class="story-link" href="#experience">My experience <span aria-hidden="true">↗</span></a></div>
 </div>
+<a class="station-dial" href="#experience" aria-label="Scroll to Experience">
+<svg viewBox="0 0 160 160" fill="none" aria-hidden="true">
+  <circle cx="80" cy="80" r="77" stroke="#ffe7aa" stroke-opacity=".55"/>
+  <g class="dial-ring" stroke="currentColor">
+    <circle cx="80" cy="80" r="72" stroke-width="5" stroke-dasharray="1 5.28" />
+    <circle cx="80" cy="80" r="66" stroke-width="2" stroke-dasharray="74 11 18 62 4 39"/>
+  </g>
+  <g class="dial-index"><g class="dial-rotor" stroke="#ff8064">
+    <circle cx="80" cy="80" r="57" stroke-width="6" stroke-dasharray="65 12 10 34 31 27"/>
+    <circle cx="80" cy="80" r="48" stroke-width="2" stroke-dasharray="3 6"/>
+  </g><path d="m80 12-4 8h8z" fill="#ffdb8c"/></g>
+  <circle class="dial-hub" cx="80" cy="80" r="31" fill="#152331" stroke="currentColor"/>
+  <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="69" y="61" width="22" height="34" rx="11"/><path d="M80 67v7m-5 7 5 5 5-5"/>
+  </g>
+</svg></a>
 </div>
 <div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
 <div class="scene-controls"><audio id="night-score" loop preload="metadata" src="assets/audio/night-line.mp3"></audio><button type="button" id="station-sound" class="station-sound" aria-pressed="false" aria-label="Background music and station effects" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Mute audio</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
