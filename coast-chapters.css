@@ -1,0 +1,76 @@
+/* Coast highway daylight gives way to the waterfront after dark. */
+#experience {
+  --fn-ink: #252430;
+  --fn-paper: #f6e8ce;
+  --field-green: #215b50;
+  background: linear-gradient(145deg, #faeedb, #f2dfc1 70%, #e9c8ac);
+}
+#experience .fn-heading {
+  padding-inline: clamp(.85rem,1.6vw,1.45rem);
+  padding-block: 1.1rem;
+  border: 4px double #f3e8c9;
+  border-radius: .4rem;
+  background: #214e47;
+  box-shadow: 0 0 0 1px #214e47;
+}
+#experience .fn-heading :is(h2,h2 span,.fn-kicker,.fn-meter-number,.fn-current-period,.fn-jump) {color: #fff2d9}
+#experience .fn-meter-track {background-color: #a3bfb0}
+#experience .fn-route-stop[data-current] {outline: 2px solid #ffcf8f}
+#skills {
+  background-color: #193d38;
+  background-image: radial-gradient(ellipse at 85% 3%, #326354 0, transparent 52%),
+    linear-gradient(145deg, #183a38, #192d30);
+}
+#projects {
+  --work-red: #ffb991;
+  --work-mint: #a9e6cc;
+  background: radial-gradient(ellipse at 88% 0%, #493447 0%, transparent 52%),
+    linear-gradient(170deg, #282738 0%, #191c2b 52%, #161c29 100%);
+}
+#projects .proj-mark {border-radius: .35rem}
+#projects .proj-kanji {color: #c0a7ae}
+#projects .proj-heading h2 em {font-family: Georgia,serif; font-weight: 400; font-style: italic; text-transform: lowercase}
+#lab {
+  --lab-red: #93462d;
+  background: linear-gradient(130deg,#f0e6d2 0%,#faf0dc 50%,#e4d6c7 100%);
+}
+#lab::before {background-color: #161c29}
+#lab .lab-card figure {box-shadow: .3rem .45rem 0 #452e3321}
+#about {
+  background: radial-gradient(ellipse at 80% 103%,#70515c 0%,transparent 49%),
+    linear-gradient(170deg,#25273c 3%,#1d1d2c 65%,#31283c 100%);
+}
+#about .origin-text h2 span {color: #ffc092}
+#about .rail-ticket {box-shadow: 8px 10px 0 #141321}
+#contact {--red: #f2aa87; --ticket-stock: #eddbb8; background-color: var(--red)}
+#contact h2 em {font-family: Georgia,serif; font-weight: 400; font-style: italic; text-transform: lowercase; color: #643237}
+.endbar {background: #201f30; border-top: 3px double #bd9a83}
+
+/* The light travels inside the cover; titles and interactive targets stay still. */
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    html.signal-motion #projects .proj-tile::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      inset: 0 0 auto;
+      aspect-ratio: 1.75;
+      border-radius: .35rem;
+      background-image: linear-gradient(112deg,transparent 39%,#fff3cb59 48%,transparent 57%);
+      background-size: 320% 100%;
+      background-repeat: no-repeat;
+      animation-name: coast-poster-pass;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: --project-cover;
+      animation-range: entry 0% cover 74%;
+    }
+    @keyframes coast-poster-pass {
+      from {background-position: 100% 0}
+      to {background-position: 0 0}
+    }
+  }
+}
+
+@media (max-width:730px) { html.signal-motion #projects .proj-tile::after {aspect-ratio: 2.1} }
