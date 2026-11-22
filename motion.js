@@ -145,21 +145,62 @@
   syncMotion();
 })();
 
-// Each experience is a stop on the same line. Track the stop crossing the
-// reading band independently of the entrance animation on its text.
+// Let the role crossing the reading line drive both the records and their route map.
 (() => {
-  const panel = document.querySelector('.field-notes');
-  if (!panel || !('IntersectionObserver' in window)) return;
-  const records = [...panel.querySelectorAll('.fn-record')];
-  const indicator = panel.querySelector('.fn-meter-number');
-  const passing = new IntersectionObserver(entries => {
-    const hit = entries.filter(entry=>entry.isIntersecting).at(-1);
-    if (!hit) return;
-    const index = records.indexOf(hit.target);
-    records.forEach(record=>record.toggleAttribute('data-passing',record===hit.target));
-    panel.style.setProperty('--field-progress',String((index+1)/records.length));
-    if (indicator) indicator.textContent = String(index+1).padStart(2,'0')+' / '+String(records.length).padStart(2,'0');
-  },{rootMargin:'-24% 0px -50% 0px'});
-  records.forEach(record=>passing.observe(record));
+  const section = document.getElementById('experience');
+  const timeline = section?.querySelector('.fn-timeline');
+  const track = section?.querySelector('.fn-meter-track');
+  const counter = section?.querySelector('.fn-meter-number');
+  const records = [...(timeline?.querySelectorAll('.fn-record') || [])];
+  if (!track || !counter || !records.length) return;
 
+  const period = document.createElement('span');
+  period.className = 'fn-current-period';
+  track.after(period);
+  const stops = records.map(() => {
+    const stop = document.createElement('span');
+    stop.className = 'fn-route-stop';
+    track.append(stop);
+    return stop;
+  });
+  const periods = records.map(record => record.querySelector('.fn-period').textContent.trim());
+  const total = String(records.length).padStart(2, '0');
+  let active = -1;
+  let visible = true;
+  let frame = 0;
+
+  function paint() {
+    frame = 0;
+    const readingLine = Math.max(80, document.documentElement.clientHeight * .42);
+    const tops = records.map(record => record.getBoundingClientRect().top);
+    let index = 0;
+    while (index + 1 < tops.length && tops[index + 1] <= readingLine) index++;
+    const nextTop = tops[index + 1];
+    const fraction = nextTop === undefined ? 0 :
+      Math.min(1, Math.max(0, (readingLine - tops[index]) / Math.max(1, nextTop - tops[index])));
+    const progress = (index + fraction) / Math.max(1, records.length - 1);
+    section.style.setProperty('--field-progress', progress.toFixed(4));
+    if (active === index) return;
+    active = index;
+    records.forEach((record, i) => {
+      record.toggleAttribute('data-passing', i === index);
+      stops[i].toggleAttribute('data-reached', i <= index);
+      stops[i].toggleAttribute('data-current', i === index);
+    });
+    period.textContent = periods[index];
+    counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + total;
+  }
+  function queue() {
+    if (visible && !frame) frame = requestAnimationFrame(paint);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      queue();
+    }, {rootMargin: '100px'}).observe(timeline);
+  }
+  addEventListener('scroll', queue, {passive:true});
+  addEventListener('resize', queue, {passive:true});
+  if ('ResizeObserver' in window) new ResizeObserver(queue).observe(timeline);
+  paint();
 })();

@@ -1,0 +1,104 @@
+/* A paper timetable gives way to the darker electronics work surface. */
+#experience {
+  --field-green: #144b40;
+  --field-line: #bab6a4;
+}
+#experience .fn-timeline {align-items: start}
+#experience .fn-heading {display: block; border-block: 1px solid #766f5c; padding: 1.1rem 0}
+#experience .fn-records {border-top: 1px solid var(--field-line)}
+#experience .fn-record {padding-block: clamp(2.1rem,4vw,4.5rem); border-bottom-color: var(--field-line)}
+#experience .fn-record::before {background: var(--field-line); width: 1px}
+#experience .fn-station {border-color: var(--field-green)}
+#experience .fn-record[data-passing] .fn-station {
+  background: var(--field-green); box-shadow: 0 0 0 4px #21544423;
+}
+#experience .fn-record h3 {font-size: clamp(1.9rem,3.5vw,3.6rem); line-height: 1.03; max-width: 18ch}
+#experience .fn-record article > p:last-child {max-width: 55ch; font-size: clamp(1rem,1.4vw,1.15rem)}
+#experience .fn-record .fn-org {font-size: .84rem; color: #87402b}
+#experience .fn-period {font-size: .82rem}
+#experience .fn-meter {
+  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .55rem 1rem;
+  align-items: start; margin: 1.2rem 0 .75rem; color: var(--field-green);
+  font: 400 .82rem/1.4 var(--mono);
+}
+#experience .fn-meter-track {
+  grid-column: 1 / -1; position: relative; display: flex; width: 100%;
+  align-items: center; justify-content: space-between; height: 21px;
+  background: linear-gradient(var(--field-line),var(--field-line)) center / 100% 1px no-repeat;
+}
+#experience .fn-meter-track i {
+  position: absolute; left: 0; top: calc(50% - 1px); width: 100%; height: 2px;
+  background: var(--field-green); transform-origin: left; transform: scaleX(var(--field-progress,0));
+  transition: none;
+}
+#experience .fn-route-stop {
+  position: relative; width: .65rem; height: .65rem; border: 1px solid #7d8170;
+  border-radius: 50%; background: var(--fn-paper);
+}
+#experience .fn-route-stop[data-reached] {background: var(--field-green); border-color: var(--field-green)}
+#experience .fn-route-stop[data-current] {outline: 1px solid var(--field-green); outline-offset: 3px}
+#experience .fn-meter-number {grid-column: 2; grid-row: 2; white-space: nowrap}
+#experience .fn-jump {font-size: .87rem}
+#experience .fn-heading h2, #skills header h3 {line-height: .9; letter-spacing: -.05em}
+#experience .fn-heading h2 span {color: var(--field-green)}
+
+/* Keep prose registered to the page. The line and the hardware supply the movement. */
+html.signal-motion #experience :is(.press-entry,.letterpress-word) {opacity: 1; translate: none}
+#experience .fn-shell {padding-bottom: 0}
+#skills.fn-skills {
+  --bench: #142e2e;
+  --grid: #c6e1c50d;
+  color: #f4f2dd; background-color: var(--bench);
+  background-image: linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px);
+  background-size: 26px 26px;
+  box-shadow: 0 0 0 100vmax var(--bench);
+  clip-path: inset(0 -100vmax);
+  margin-top: clamp(3rem,7vw,7rem); padding-block: clamp(3rem,6vw,6.5rem);
+}
+#skills header h3 {color: #fbf4dc}
+#skills header h3 span, #skills .fn-kicker {color: #bad8b0}
+#skills .skill-deck {gap: 1px; border: 1px solid #718875; background: #718875}
+#skills .skill-deck > div {border: 0; box-shadow: none; padding: clamp(1.2rem,2.6vw,2.6rem)}
+#skills .skill-deck .board-skill {background: #203f40}
+#skills .skill-deck .board-skill:nth-child(2) {background: #2c4136}
+#skills .skill-deck .domain-skill {background: #e6e9d9}
+#skills .board-skill figure {overflow: hidden}
+#skills .board-skill .skill-board {transform-origin: center}
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.signal-motion #skills .board-skill .skill-board {
+    transform: translateX(calc((1 - var(--print-progress,1)) * -8%))
+      rotate(calc((1 - var(--print-progress,1)) * -4deg));
+  }
+  html.signal-motion #skills .board-skill:nth-child(2) .skill-board {
+    transform: translateX(calc((1 - var(--print-progress,1)) * 8%))
+      rotate(calc((1 - var(--print-progress,1)) * 4deg));
+  }
+}
+@media (min-width: 901px) and (min-height: 600px) {
+  #experience .fn-timeline {
+    display: grid; grid-template-columns: minmax(215px,.82fr) minmax(0,1.8fr);
+    column-gap: clamp(2.5rem,7vw,8rem);
+  }
+  #experience .fn-heading {position: sticky; top: max(90px,16svh); align-self: start}
+  #experience .fn-heading h2 {font-size: clamp(3.6rem,6.25vw,7.15rem)}
+  #experience .fn-record {grid-template-columns: minmax(0,1fr); padding-inline-start: 2.2rem; gap: .85rem}
+  #experience .fn-record::before {inset: 0 auto 0 .33rem; height: auto}
+  #experience .fn-station {position: absolute; left: -2.19rem; top: .25rem}
+}
+@media (min-width: 1200px) and (min-height: 600px) {
+  #skills {display: grid; grid-template-columns: minmax(185px,.65fr) minmax(0,2fr); gap: 4vw; align-items: start}
+  #skills > header {position: sticky; top: max(92px,16svh)}
+  #skills .skill-deck {margin: 0}
+}
+@media (max-width: 900px), (max-height: 599px) {
+  #experience .fn-timeline {display: block}
+  #experience .fn-heading {position: static}
+  #experience .fn-meter {max-width: 26rem}
+  #experience .fn-record h3 {max-width: none}
+}
+@media print {
+  #experience .fn-heading, #skills > header {position: static}
+  #skills.fn-skills {box-shadow: none; clip-path: none}
+}
+#experience .fn-meter:not(:has(.fn-route-stop)) {display: none}
