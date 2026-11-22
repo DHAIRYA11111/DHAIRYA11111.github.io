@@ -39,6 +39,8 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="signal-scroll.css?v=2e46a9cdef">
 <script defer src="signal-scroll.js?v=2e5d8cefcb"></script>
 <link rel="stylesheet" href="arrival.css?v=1a45b1acca">
+<link rel="stylesheet" href="portfolio-index.css?v=66173d7ef9">
+<script defer src="portfolio-index.js?v=80337711b7"></script>
 </head>
 <body>
 <a class="skip" href="#experience">Skip to experience</a>
@@ -47,8 +49,16 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <a class="wordmark" href="#home" aria-label="Dhairya Sansi, home"><img src="assets/mark.svg" alt="" width="34" height="34"><span>Dhairya Sansi<span class="brand-dot">.</span></span></a>
 <nav aria-label="Main" class="main-nav"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#lab">Workbench</a><a href="#about">Story</a><a href="#contact">Contact</a></nav>
 <a class="resume" href="assets/dhairya-resume.pdf?v=2026-11-18" target="_blank" rel="noopener">Résumé <span aria-hidden="true">↗</span></a>
+<button type="button" id="open-index" aria-haspopup="dialog" aria-controls="portfolio-index" aria-expanded="false" hidden>Index</button>
 </div>
 </header>
+<dialog id="portfolio-index" aria-labelledby="index-title">
+  <div class="index-sheet">
+    <div class="index-top"><h2 id="index-title">Portfolio index</h2><button class="index-close" type="button" autofocus>Close</button></div>
+    <nav aria-label="Portfolio sections"></nav>
+    <div class="index-frame" aria-hidden="true"><img class="index-picture" alt=""></div>
+  </div>
+</dialog>
 <main>
 <section class="city-hero" id="home" aria-labelledby="hero-title">
 <div class="city-art" aria-hidden="true"><picture><source media="(max-width:640px)" srcset="assets/city/city-night-mobile.webp"><img src="assets/city/city-night.webp" width="1920" height="817" alt="" fetchpriority="high"></picture></div>
