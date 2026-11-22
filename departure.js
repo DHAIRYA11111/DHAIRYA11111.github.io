@@ -8,12 +8,16 @@
   function paint() {
     frame = 0;
     const distance = runway.offsetHeight - home.offsetHeight;
-    const progress = distance > 1 ? clamp((inset - runway.getBoundingClientRect().top) / distance) : 0;
+    const scrolled = inset - runway.getBoundingClientRect().top;
+    const compact = distance <= 1;
+    const range = compact ? Math.min(home.offsetHeight, innerHeight) * .72 : distance;
+    const progress = document.documentElement.classList.contains('signal-motion')
+      ? clamp(scrolled / Math.max(1, range)) : 0;
     const reveal = clamp((progress - .30) / .48);
     home.style.setProperty('--travel', progress.toFixed(4));
     home.style.setProperty('--letter-exit', clamp(progress / .47).toFixed(4));
     home.style.setProperty('--chapter', reveal.toFixed(4));
-    copy.inert = progress > .55 && !copy.contains(document.activeElement);
+    copy.inert = !compact && progress > .55 && !copy.contains(document.activeElement);
     home.dispatchEvent(new CustomEvent('departureprogress', {detail: progress}));
   }
   function queue() {if (!frame) frame = requestAnimationFrame(paint)}

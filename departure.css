@@ -29,3 +29,14 @@
     .signal-motion .can-hold .city-shade {display:block}
   }
 }
+
+/* Short windows keep their natural scroll distance while the panorama opens. */
+@media screen and (min-width: 641px) and (prefers-reduced-motion:no-preference) {
+  html.signal-motion .departure-runway:not(.can-hold) .city-art {
+    animation-fill-mode: backwards;
+    --window-edge: calc(50% - var(--travel,0)*34%);
+  }
+  html.signal-motion .departure-runway:not(.can-hold) .city-art img {
+    transform: translateY(calc(var(--travel,0)*20px)) scale(1.1);
+  }
+}
