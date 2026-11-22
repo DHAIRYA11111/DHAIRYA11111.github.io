@@ -44,6 +44,7 @@
     if (!isEnabled()) return;
     const rect = hero.getBoundingClientRect();
     const progress = Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height)));
+    hero.style.setProperty('--view-offset', Math.round(progress * 22) + 'px');
     const travel = Math.min(52, hero.clientWidth * .04) * progress;
     words.forEach((word, i) => {
       word.style.setProperty('--word-x', (travel * (i % 2 ? 1 : -.65)).toFixed(2) + 'px');
@@ -135,6 +136,7 @@
     if (!fine.matches || !isEnabled()) clearPointer();
     if (isEnabled()) return scheduleWords();
     finishIntro();
+    hero.style.removeProperty('--view-offset');
     words.forEach(word => {word.style.removeProperty('--word-x'); word.style.removeProperty('--word-y');});
   }
   if (pauseButton) new MutationObserver(syncMotion).observe(pauseButton,{attributes:true,attributeFilter:['aria-pressed']});
