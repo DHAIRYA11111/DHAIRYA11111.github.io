@@ -47,3 +47,98 @@
 @media(hover:hover) { .proj-tile:hover { background:#1a202a; } .proj-tile:hover .proj-arrow { transform:translate(3px,-3px); } .proj-tile:hover .proj-visit { color:var(--work-mint); } }
 @media(max-width:730px) { .proj-inner { width:min(91%,680px); } .proj-grid { grid-template-columns:1fr; } .proj-section .proj-tile { display:grid; grid-template-columns:clamp(55px,12vw,72px) minmax(0,1fr); column-gap:1.2rem; padding:1.55rem 0; } .proj-tile+.proj-tile { border-left:0; border-top:1px solid #3c444e; } .proj-mark { display:contents; } .proj-mark img { grid-row:1/5; grid-column:1; width:100%; } .proj-arrow { position:absolute; right:0; top:1.5rem; } .proj-type,.proj-tile h3,.proj-blurb,.proj-visit { grid-column:2; } .proj-type { margin-right:1.55rem; } .proj-tile h3 { font-size:clamp(2rem,7.8vw,3rem); } .proj-blurb { margin:.5rem 0 1.1rem; max-width:51ch; } .proj-visit { justify-self:start; } }
 @media(prefers-reduced-motion:reduce) { .proj-section .proj-tile,.proj-arrow { transition:none; } .proj-tile:hover .proj-arrow { transform:none; } }
+
+/* Project covers use each project's own mark as the subject. */
+.proj-grid {gap: clamp(14px, 2.6vw, 40px); border: 0}
+.proj-section .proj-tile {
+  --cover-ink: #0c5d46;
+  --cover-paper: #a8efba;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 0;
+  padding: 0 0 1.2rem;
+  border-bottom: 1px solid #52606a;
+  background: transparent;
+}
+.proj-mark {
+  isolation: isolate;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 1.75;
+  margin: 0 0 1.25rem;
+  background: var(--cover-paper);
+  color: var(--cover-ink);
+}
+.proj-mark img {
+  position: relative;
+  z-index: 1;
+  width: clamp(54px, 5.6vw, 84px);
+  height: auto;
+  filter: drop-shadow(0 12px 9px #0c1c232f);
+  transform: rotate(-6deg);
+}
+.proj-mark::before, .proj-mark::after {
+  content: "";
+  grid-area: 1/1;
+  pointer-events: none;
+  position: absolute;
+}
+.cover-fund .proj-mark::before {
+  inset: -65% -20%;
+  transform: rotate(-29deg);
+  background: repeating-linear-gradient(0deg,transparent 0 18px,#0a6c4530 18px 19px);
+}
+.cover-fund .proj-mark::after {
+  width: 83%; aspect-ratio: 1; border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 8%, #126642 8.3% 8.8%, transparent 9%);
+}
+.proj-tile.cover-play {--cover-paper: #372446; --cover-ink: #ffc798}
+.cover-play .proj-mark {
+  background-image: radial-gradient(#ffd39e99 1px, transparent 1.5px);
+  background-size: 19px 19px;
+}
+.cover-play .proj-mark::before {
+  width: 45%; aspect-ratio: 1;
+  transform: rotate(-18deg);
+  background: #56315e;
+  box-shadow: 9px 9px 0 #eb8275,18px 18px 0 #874456,27px 27px 0 #472938;
+  border: 1px solid #fdc3a7;
+}
+.proj-tile.cover-log {--cover-paper: #99c8eb; --cover-ink: #233957}
+.cover-log .proj-mark::before, .cover-log .proj-mark::after {
+  width: 42%; aspect-ratio: .81; border: 1px solid currentColor;
+  background: repeating-linear-gradient(0deg,transparent 0 11%,#38557e60 11.2% 11.7%),
+    repeating-linear-gradient(90deg,transparent 0 13%,#38557e50 13.2% 13.7%),#e4f1f7;
+}
+.cover-log .proj-mark::before {transform: translate(-18%,6%) rotate(-14deg)}
+.cover-log .proj-mark::after {transform: translate(18%,-3%) rotate(9deg)}
+.proj-mark .proj-arrow {
+  position: absolute;
+  inset: .7rem .8rem auto auto;
+  font-size: 1.25rem;
+  color: var(--cover-ink);
+}
+.proj-section .proj-type {font-size: .75rem; margin-top: .2rem}
+.proj-section .proj-visit {align-self: flex-start}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .proj-mark img, .proj-mark::before, .proj-mark::after {
+    transition: translate .52s cubic-bezier(.2,.75,.2,1), scale .52s cubic-bezier(.2,.75,.2,1);
+  }
+  html:not(:has(#pause-scene[aria-pressed="true"])) .proj-tile:is(:hover,:focus-visible) .proj-mark img {
+    translate: 0 -5px; scale: 1.12;
+  }
+  html:not(:has(#pause-scene[aria-pressed="true"])) .proj-tile:is(:hover,:focus-visible) .proj-mark::before {
+    translate: -2% 2%; scale: 1.06;
+  }
+  html:not(:has(#pause-scene[aria-pressed="true"])) .proj-tile:is(:hover,:focus-visible) .proj-mark::after {
+    translate: 2% -2%; scale: 1.06;
+  }
+}
+@media (max-width:730px) {
+  .proj-grid {gap: 2.4rem}
+  .proj-section .proj-mark {aspect-ratio: 2.1; margin-bottom: 1rem}
+  .proj-section .proj-mark img {grid-row: 1; grid-column: 1; width: clamp(66px,17vw,90px)}
+}
