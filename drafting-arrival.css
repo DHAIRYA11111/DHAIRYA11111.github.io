@@ -1,0 +1,55 @@
+/* The edge of the project gallery gives way to the ruled edge of drawing paper. */
+#lab {position: relative}
+#lab::before {
+  content: "";
+  display: block;
+  height: clamp(20px, 3vw, 44px);
+  background-color: #10131c;
+  clip-path: polygon(0 0, 100% 0, 100% 15%, 0 100%);
+  transform-origin: top;
+}
+#lab .lab-header {position: relative}
+#lab .lab-header::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 calc(100% + 11px);
+  height: 7px;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 8px) left bottom/100% 3px no-repeat;
+  opacity: .36;
+  transform-origin: left;
+  pointer-events: none;
+}
+html.signal-motion #lab .press-entry {
+  opacity: 1;
+  translate: none;
+}
+@keyframes drafting-paper-edge {
+  from {transform: scaleY(1)}
+  to {transform: scaleY(.28)}
+}
+@keyframes drafting-rule-sweep {
+  from {clip-path: inset(0 94% 0 0)}
+  to {clip-path: inset(0)}
+}
+@supports (animation-timeline: view()) and (animation-range: entry 0% cover 30%) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    html:not(:has(#pause-scene[aria-pressed="true"])) #lab {
+      view-timeline-name: --drafting-sheet;
+      view-timeline-axis: block;
+    }
+    html:not(:has(#pause-scene[aria-pressed="true"])) #lab::before {
+      animation: drafting-paper-edge 1s ease-out both;
+      animation-timeline: --drafting-sheet;
+      animation-range: cover 0% entry 65%;
+    }
+    html:not(:has(#pause-scene[aria-pressed="true"])) #lab .lab-header::before {
+      animation: drafting-rule-sweep 1s cubic-bezier(.23,.65,.3,1) both;
+      animation-timeline: --drafting-sheet;
+      animation-range: cover 0% entry 80%;
+    }
+  }
+}
+@media print {
+  #lab::before, #lab .lab-header::before {display: none}
+}
