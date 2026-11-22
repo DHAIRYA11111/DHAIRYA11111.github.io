@@ -1,0 +1,27 @@
+.mast-inner .coast-route {
+  display:flex; align-items:center; gap:.65rem; width:min(34vw,410px); margin-left:auto;
+}
+.mast-inner:has(.coast-route) .resume {margin-left:0}
+.coast-route-chart {
+  flex:1; min-width:0; height:42px; position:relative; display:flex;
+  border-radius:5px; background:#253438;
+}
+.coast-route-chart canvas {position:absolute; inset:0; width:100%; height:100%; border-radius:inherit}
+.coast-route-chart a {position:relative; display:block; flex:1; color:#ffc995; border-radius:4px}
+.coast-route-chart a::before {
+  content:""; position:absolute; top:var(--pin-y); left:50%; width:7px; height:7px;
+  transform:translate(-50%,-50%); border-radius:50%; border:1.6px solid currentColor; background:#243538;
+}
+.coast-route-chart a[aria-current]::before {
+  width:10px; height:10px; background:#ffcb99; box-shadow:0 0 0 3px #302c33,0 0 0 4px #e5aa78;
+}
+.coast-route-chart a:is(:hover,:focus-visible) {background:#ffffff14}
+.coast-route-location {min-width:8.5ch; color:#ffd2ae; font: .8rem var(--mono)}
+@media(max-width:850px){
+  .mast-inner:has(.coast-route) {height:auto; flex-wrap:wrap; gap:.3rem .65rem; padding-block:.4rem}
+  .mast-inner .coast-route {order:4; flex-basis:100%; width:100%}
+  .mast-inner:has(.coast-route) .resume {margin-left:auto}
+  .coast-route-chart {height:32px}
+  .coast-route-location {font-size:.78rem}
+}
+@media print {.mast-inner .coast-route {display:none}}
