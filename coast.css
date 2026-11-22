@@ -1,0 +1,11 @@
+.coast-panorama {position:absolute;inset:0;width:100%;height:100%;display:block}
+.city-hero {background-color:#191a28}
+.hero-copy h1 {color:#fff2d7}
+#hero-title .surname {color:#ffc59a}
+.hero-actions .action-hot {background:#ffc59a}
+.mast {background:#181925f5}
+#home .hero-line {color:#f6bc96}
+#home .scene-caption {border-color:#ffc59a}
+#home .city-art {background:#54475e}
+#home .city-shade {pointer-events:none}
+#home .ds-train-world {filter:sepia(.24)}

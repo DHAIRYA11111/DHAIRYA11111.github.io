@@ -48,6 +48,8 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="drafting-arrival.css?v=c423816fd0">
 <link rel="stylesheet" href="terminus-scroll.css?v=ef707bbc23">
 <script defer src="terminus-scroll.js?v=a04898dcc5"></script>
+<link rel="stylesheet" href="coast.css?v=a37f647636">
+<script defer src="coast.js?v=33990b1d32"></script>
 </head>
 <body>
 <a class="skip" href="#experience">Skip to experience</a>
@@ -69,7 +71,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <main>
 <div class="departure-runway">
 <section class="city-hero" id="home" aria-labelledby="hero-title">
-<div class="city-art" aria-hidden="true"><picture><source media="(max-width:640px)" srcset="assets/city/city-night-mobile.webp"><img src="assets/city/city-night.webp" width="1920" height="817" alt="" fetchpriority="high"></picture></div>
+<div class="city-art" aria-hidden="true"><picture><source media="(max-width:640px)" srcset="assets/city/city-night-mobile.webp"><img src="assets/city/city-night.webp" width="1920" height="817" alt="" fetchpriority="high"></picture><canvas class="coast-panorama"></canvas></div>
 <div class="city-shade" aria-hidden="true"></div>
 <canvas id="city-fx" aria-hidden="true"></canvas>
 <div class="hero-frame">
@@ -97,7 +99,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 </svg></a>
 </div>
 <div class="departure-cue" aria-hidden="true"><small>FIELD NOTES</small><strong>Experience.</strong></div>
-<div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
+<div class="scene-caption"><span>COAST HIGHWAY</span></div>
 <div class="scene-controls"><audio id="night-score" loop preload="metadata" src="assets/audio/last-light-jaipur.m4a"></audio><button type="button" id="station-sound" class="station-sound" aria-pressed="false" title="Last Light, Jaipur · original score" aria-label="Last Light, Jaipur music and station effects" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Mute audio</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
 </section>
 </div>
