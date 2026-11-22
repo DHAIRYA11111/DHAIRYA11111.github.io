@@ -1,0 +1,41 @@
+/* The education ticket unrolls into the Contact section. All moving paint stays
+   behind the content so the email address and social links remain usable. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.signal-motion .ticket-arrival {
+    --ticket-stock: #dfd8c5;
+    position: relative;
+    isolation: isolate;
+    background: var(--ticket-stock);
+  }
+
+  html.signal-motion .ticket-arrival::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: auto 0 100%;
+    height: clamp(12px, 1.45vw, 22px);
+    background: radial-gradient(circle at 50% 0, transparent 0 4px, var(--ticket-stock) 4.5px)
+      left bottom / 21px 100% repeat-x;
+    transform-origin: bottom;
+    transform: scaleY(var(--tear-height, 1));
+    pointer-events: none;
+  }
+
+  html.signal-motion .ticket-arrival::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: var(--red);
+    clip-path: polygon(0 var(--ink-left, 0%), 100% var(--ink-right, 0%), 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+
+  html.signal-motion .ticket-arrival h2 em {
+    color: #4e2525;
+  }
+
+  html.signal-motion .ticket-issued {
+    rotate: var(--ticket-turn, 0deg);
+  }
+}
