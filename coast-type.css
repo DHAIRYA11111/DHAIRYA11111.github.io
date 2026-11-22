@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Anton Coast";
+  src: url("assets/fonts/anton.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {--coast-title: "Anton Coast","Barlow Condensed",Impact,sans-serif}
+#home .hero-copy h1 {
+  font-family:var(--coast-title); font-weight:400; text-transform:uppercase;
+  font-size:clamp(5.65rem,8.7vw,10.5rem); line-height:.98; letter-spacing:-.025em;
+  color:#fff2d8; paint-order:stroke fill; -webkit-text-stroke:1.5px #201c26;
+  text-shadow:1px 1px #251f28,2px 2px #251f28,3px 3px #251f28,4px 4px #cf8468,6px 6px #261d27;
+}
+#home #hero-title .surname {
+  font:inherit; color:#ffc89d; letter-spacing:inherit; padding-left:.33em;
+}
+#home #hero-title .surname .motion-char {font-style:normal}
+#home .hero-line {color:#ffcfaa; font-size:clamp(.85rem,1vw,1rem); margin-bottom:.6rem}
+:is(#projects,#experience,#lab,#about,#contact) h2,
+#skills header h3,.index-sheet nav a {
+  font-family:var(--coast-title); font-weight:400; letter-spacing:-.008em;
+}
+#projects h2 em,.terminus h2 em {color:#ffc192}
+#portfolio-index .index-sheet nav a {line-height:1.16}
+@media (max-width:640px) {
+  #home .hero-copy h1 {font-size:clamp(3rem,10.3vw,5rem); line-height:1.12}
+  #home #hero-title .surname {padding-left:.16em}
+}
