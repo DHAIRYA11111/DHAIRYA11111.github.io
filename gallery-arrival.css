@@ -1,0 +1,38 @@
+/* The card stays anchored as its illustrated cover unfolds into place. */
+html.signal-motion #projects.pin-gallery {min-height: auto}
+html.signal-motion #projects.pin-gallery .proj-inner {position: static}
+html.signal-motion #projects :is(.proj-heading, .proj-tile).press-entry {
+  opacity: 1;
+  translate: none;
+}
+#projects .proj-mark {transform-origin: 50% 100%}
+#projects .proj-tile {
+  --cover-lift: 38px;
+  --cover-turn: -2.2deg;
+  --arrival-end: 30%;
+}
+#projects .cover-play {--cover-turn: 1.6deg; --arrival-end: 35%}
+#projects .cover-log {--cover-turn: -1.1deg; --arrival-end: 40%}
+@keyframes project-cover-settle {
+  from {
+    transform: perspective(900px) translateY(var(--cover-lift)) rotateX(12deg) rotate(var(--cover-turn)) scale(.97);
+    clip-path: inset(0 1.5% 9% round 2px);
+  }
+  to {transform: none; clip-path: inset(0)}
+}
+@supports (animation-timeline: view()) and (animation-range: entry 0% cover 30%) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    html:not(:has(#pause-scene[aria-pressed="true"])) #projects .proj-tile {
+      view-timeline-name: --project-cover;
+      view-timeline-axis: block;
+    }
+    html:not(:has(#pause-scene[aria-pressed="true"])) #projects .proj-tile:not(:focus-within) .proj-mark {
+      animation: project-cover-settle 1s cubic-bezier(.2,.66,.3,1) both;
+      animation-timeline: --project-cover;
+      animation-range: entry 0% cover var(--arrival-end);
+    }
+  }
+}
+@media (max-width: 730px) {
+  #projects .proj-tile {--cover-lift: 18px; --cover-turn: -.8deg; --arrival-end: 26%}
+}
