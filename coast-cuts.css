@@ -1,0 +1,26 @@
+.coast-cut {
+  position:fixed; inset:0; z-index:20; pointer-events:none;
+  overflow:hidden; contain:strict; visibility:hidden;
+}
+.coast-cut i {position:absolute; inset:0; background:#252434; transform-origin:center}
+.coast-cut i:first-child {
+  background:linear-gradient(99deg,#262536 0 68%,#f4af7f 68% 70%,#353346 70%);
+  clip-path:polygon(0 0,70% 0,38% 100%,0 100%);
+}
+.coast-cut i:last-child {
+  background:linear-gradient(99deg,#484156 0 38%,#f4af7f 38% 40%,#242434 40%);
+  clip-path:polygon(71% 0,100% 0,100% 100%,39% 100%);
+}
+@media screen and (prefers-reduced-motion:no-preference) {
+  html.signal-motion :is(.index-sheet nav a,.hero-actions a,.proj-visit,.mail-link) {
+    transition:color .18s, background-color .18s, letter-spacing .23s;
+  }
+  html.signal-motion .index-sheet nav a:is(:hover,:focus-visible) {letter-spacing:.035em}
+  html.signal-motion .coast-route-chart a[aria-current]::before {
+    animation:route-arrives .42s ease-out;
+  }
+  @keyframes route-arrives {
+    from {box-shadow:0 0 0 8px #ffd29b55}
+    to {box-shadow:0 0 0 3px #302c33,0 0 0 4px #e5aa78}
+  }
+}
