@@ -1,0 +1,31 @@
+.departure-cue {display:none}
+@media screen and (prefers-reduced-motion:no-preference) {
+  html.signal-motion .can-hold {padding-bottom:0}
+  html.signal-motion .can-hold::after {content:""; display:block; height:112svh}
+  html.signal-motion .can-hold #home {position:sticky; top:var(--mast-height,0px)}
+  .signal-motion .can-hold .hero-copy:not(:has(:focus-visible)) {
+    transform:translateY(calc(var(--letter-exit,0)*-68px));
+    opacity:calc(1 - var(--letter-exit,0));
+  }
+  .signal-motion .can-hold .city-art {
+    animation-fill-mode:backwards;
+    --window-edge:calc(50% - var(--travel,0)*52%);
+  }
+  .signal-motion .can-hold .city-art img {transform:scale(calc(1.08 + var(--travel,0)*.12))}
+  .signal-motion .can-hold .city-hero::after {opacity:calc(1 - var(--travel,0))}
+  .signal-motion .can-hold .departure-cue {
+    display:grid; position:absolute; inset:auto auto 24% var(--margin);
+    z-index:1; pointer-events:none; color:#fff7e4;
+    text-shadow:0 2px 16px #071323; opacity:var(--chapter,0);
+    translate:0 calc((1 - var(--chapter,0))*30px);
+  }
+  .departure-cue small {font:400 .86rem var(--mono); letter-spacing:.1em}
+  .departure-cue strong {font:italic 500 clamp(3rem,8vw,8rem)/1.1 Georgia,serif; letter-spacing:-.055em}
+  .signal-motion .can-hold .city-shade {background:linear-gradient(0deg,#101922c2,transparent 70%);opacity:var(--chapter,0)}
+  @media(max-width:640px) {
+    html.signal-motion .can-hold::after {height:65svh}
+    .signal-motion .can-hold .city-art {height:calc(clamp(160px,47vw,265px) + var(--travel,0)*42%);}
+    .signal-motion .can-hold .departure-cue {bottom:28%}
+    .signal-motion .can-hold .city-shade {display:block}
+  }
+}

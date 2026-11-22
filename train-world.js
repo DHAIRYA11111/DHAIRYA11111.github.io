@@ -73,13 +73,15 @@
     behind.setAttribute('transform','translate('+(-progress*12).toFixed(2)+' 0)');
     track.setAttribute('transform','translate('+(-progress*43).toFixed(2)+' 0)');
   }
+  let departure = 0;
+  hero.addEventListener('departureprogress', event => {departure = event.detail; queue();});
   function tick(now) {
     frame=0;
     if (document.hidden || !onscreen || paused() || reduced.matches) {last=0;return;}
     if (last) intro=Math.min(1,intro+Math.min(50,now-last)/1900);
     last=now;
     const rect=hero.getBoundingClientRect();
-    progress=Math.max(0,Math.min(1,-rect.top/Math.max(1,rect.height)));
+    progress=Math.max(departure, Math.max(0,Math.min(1,-rect.top/Math.max(1,rect.height))));
     paint();
     if (intro<1) queue();
   }

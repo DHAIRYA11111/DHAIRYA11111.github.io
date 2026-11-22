@@ -33,7 +33,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <script defer src="night-line.js?v=437a5133d2"></script>
 <script defer src="motion.js?v=3f9c7cf81d"></script>
 <link rel="stylesheet" href="train-world.css?v=b44d44bf48">
-<script defer src="train-world.js?v=916672d8bf"></script>
+<script defer src="train-world.js?v=70831acb61"></script>
 <link rel="stylesheet" href="dial.css?v=f435f2dbad">
 <script defer src="dial.js?v=11dcdd54c4"></script>
 <link rel="stylesheet" href="signal-scroll.css?v=2e46a9cdef">
@@ -41,6 +41,8 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 <link rel="stylesheet" href="arrival.css?v=1a45b1acca">
 <link rel="stylesheet" href="portfolio-index.css?v=66173d7ef9">
 <script defer src="portfolio-index.js?v=80337711b7"></script>
+<link rel="stylesheet" href="departure.css?v=dd607378e3">
+<script defer src="departure.js?v=dcf457ebe7"></script>
 </head>
 <body>
 <a class="skip" href="#experience">Skip to experience</a>
@@ -60,6 +62,7 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
   </div>
 </dialog>
 <main>
+<div class="departure-runway">
 <section class="city-hero" id="home" aria-labelledby="hero-title">
 <div class="city-art" aria-hidden="true"><picture><source media="(max-width:640px)" srcset="assets/city/city-night-mobile.webp"><img src="assets/city/city-night.webp" width="1920" height="817" alt="" fetchpriority="high"></picture></div>
 <div class="city-shade" aria-hidden="true"></div>
@@ -88,9 +91,11 @@ window.scrollTo({top: 0, left: 0, behavior: 'instant'});
   </g>
 </svg></a>
 </div>
+<div class="departure-cue" aria-hidden="true"><small>FIELD NOTES</small><strong>Experience.</strong></div>
 <div class="scene-caption"><span class="scene-label" lang="ja">夜行線</span><span>NIGHT LINE</span></div>
 <div class="scene-controls"><audio id="night-score" loop preload="metadata" src="assets/audio/last-light-jaipur.m4a"></audio><button type="button" id="station-sound" class="station-sound" aria-pressed="false" title="Last Light, Jaipur · original score" aria-label="Last Light, Jaipur music and station effects" hidden><span class="equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-state">Mute audio</span></button><button id="pause-scene" class="pause-scene" type="button" hidden aria-label="Pause city animation" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button></div>
 </section>
+</div>
 <div class="station-strip"><div class="strip-inner"><span><i class="pin-dot" aria-hidden="true"></i> JAIPUR, INDIA</span><span class="route-dash" aria-hidden="true"></span><span class="track-name">ROBOTICS &nbsp;/&nbsp; VISION &nbsp;/&nbsp; WEB</span><span class="time-display">IST <time id="jaipur-time">UTC+5:30</time></span></div></div>
 
 <section id="experience" class="field-notes" aria-labelledby="field-title">
