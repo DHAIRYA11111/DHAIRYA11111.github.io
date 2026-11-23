@@ -51,6 +51,13 @@
   const phase=gl.getUniformLocation(program,'phase'), strength=gl.getUniformLocation(program,'strength');
   const clamp=x=>Math.min(1,Math.max(0,x));
   let ready=false,frame=0;
+  const garage=document.createElement('div');
+  garage.className='mission-arrival';
+  garage.setAttribute('aria-hidden','true');
+  garage.innerHTML='<div class="garage-view"><i></i></div><div class="mission-caption"><small></small><strong></strong></div>';
+  const firstJob=destination.querySelector('.fn-record');
+  garage.querySelector('small').textContent=firstJob.querySelector('.fn-org').textContent;
+  garage.querySelector('strong').textContent=firstJob.querySelector('h3').textContent;
   function hide() {
     canvas.hidden=true;
     home.classList.remove('walking-shot');
@@ -58,25 +65,34 @@
   function draw() {
     frame=0;
     if (!ready || !document.documentElement.classList.contains('signal-motion')) return hide();
-    const arrival=destination.getBoundingClientRect().top;
+    const stage=garage.getBoundingClientRect();
+    const arrival=stage.top;
+    const viewport=document.documentElement.clientHeight;
+    const approach=clamp((viewport-arrival)/(viewport*.88));
+    const follow=approach*approach*(3-2*approach);
+    const title=clamp((approach-.77)/.20);
+    garage.style.setProperty('--tracking',follow.toFixed(4));
+    garage.style.setProperty('--title-in',title.toFixed(4));
     const start=home.parentElement.getBoundingClientRect().top + scrollY;
     const distance=Math.max(0,scrollY-start);
-    if(distance<1 || arrival < -innerHeight*.24) return hide();
+    if(distance<1 || stage.bottom < 0) return hide();
     home.classList.add('walking-shot');
     const rect=layer.getBoundingClientRect();
     const w=Math.min(rect.width,rect.height*art.naturalWidth/art.naturalHeight);
     const h=w*art.naturalHeight/art.naturalWidth;
     const progress=clamp(distance/Math.max(1,distance+arrival-innerHeight*.12));
     const handoff=clamp((innerHeight-arrival)/innerHeight);
-    const scale=1-.48*progress;
+    const scale=(1-.42*progress)*(1+.18*follow);
     const ground=Math.max(rect.bottom,Math.min(innerHeight*.86,rect.bottom+distance));
-    const x=rect.left+rect.width/2 - innerWidth*.18*progress;
-    const foot=ground - innerHeight*.06*handoff;
+    const freeX=rect.left+rect.width/2-innerWidth*.18*progress;
+    const x=freeX+(innerWidth*.75-freeX)*follow;
+    const freeFoot=ground-innerHeight*.06*handoff;
+    const foot=freeFoot+(arrival+stage.height*.87-freeFoot)*follow;
     canvas.hidden=false;
     canvas.style.width=w*scale/.71+'px'; canvas.style.height=h*scale/.94+'px';
     canvas.style.left=x+'px'; canvas.style.top=foot+'px';
-    canvas.style.opacity=1-clamp((innerHeight*.2-arrival)/(innerHeight*.44));
-    gl.uniform1f(phase,distance/Math.max(22,h*.09));gl.uniform1f(strength,clamp(distance/65));
+    canvas.style.opacity=1-clamp((viewport*.25-stage.bottom)/(viewport*.25));
+    gl.uniform1f(phase,distance/Math.max(22,h*.09));gl.uniform1f(strength,clamp(distance/65)*(1-clamp((approach-.80)/.20)));
     gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES,0,grid.length/2);
   }
   function queue(){if(!frame)frame=requestAnimationFrame(draw)}
@@ -88,7 +104,7 @@
     gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
     canvas.height=Math.min(1200,art.naturalHeight);canvas.width=Math.ceil(canvas.height*art.naturalWidth/art.naturalHeight*.94/.71);
     gl.viewport(0,0,canvas.width,canvas.height);
-    canvas.hidden=true;document.body.append(canvas); ready=true;queue();
+    canvas.hidden=true;document.body.append(canvas); destination.prepend(garage); ready=true;queue();
   }).catch(hide);
   addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);
   new MutationObserver(queue).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
