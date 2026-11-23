@@ -59,3 +59,12 @@
   #home .hero-intro {position: relative}
 }
 @media print {#home .mechanic-layer {display: none}}
+/* The camera follows the walker outside the clipped hero into the next section. */
+html.signal-motion #home.walking-shot .mechanic-layer {
+  visibility:hidden; transform:none;
+}
+.coast-walker {
+  position:fixed; pointer-events:none; z-index:4; transform:translate(-50%,-97%);
+  filter:drop-shadow(1px 3px 2px #24182a44);
+}
+@media print, (prefers-reduced-motion: reduce) {.coast-walker {display:none}}
