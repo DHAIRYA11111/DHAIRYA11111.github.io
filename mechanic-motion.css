@@ -1,0 +1,61 @@
+/* One scroll position drives both the figure and the existing coastal camera. */
+#home .mechanic-layer {
+  --walk-x: -7vw;
+  --walk-y: 5%;
+  position: absolute;
+  inset: 9% 12% 10% auto;
+  width: 34%;
+  isolation: isolate;
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: 50% 96%;
+}
+#home .mechanic-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform-origin: 50% 100%;
+  user-select: none;
+}
+.mechanic-layer::before {
+  content: "";
+  position: absolute;
+  inset: auto 22% -1.2%;
+  height: 4.5%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #201625b8, #20162555 45%, transparent 72%);
+}
+#home .station-dial {right: 2%; width: clamp(60px, 7.5vw, 116px)}
+@keyframes mechanic-arrival {
+  from {opacity: 0; transform: translate3d(5%, 2%, 0) scale(.97)}
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.signal-motion #home .mechanic-layer {
+    transform: translate3d(calc(var(--travel, 0) * var(--walk-x)), calc(var(--travel, 0) * var(--walk-y)), 0)
+      scale(calc(1 - var(--travel, 0) * .24)) rotate(calc(var(--travel, 0) * -2deg));
+    opacity: clamp(0, calc((1 - var(--travel, 0)) * 5), 1);
+  }
+  html.signal-motion .mechanic-art {animation: mechanic-arrival .68s cubic-bezier(.2,.74,.25,1) backwards}
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  #home .mechanic-layer {right: 9%; width: 31%; top: 17%}
+  #home .station-dial {top: 13%; right: 2%; width: 52px}
+}
+@media (max-width: 640px) {
+  #home .mechanic-layer {
+    --walk-x: -3vw;
+    --walk-y: -4%;
+    inset: clamp(27px, 7vw, 44px) 3% auto auto;
+    height: clamp(182px, 52vw, 305px);
+    width: 37%;
+  }
+  #home.ds-has-train .hero-frame {padding-top: clamp(123px, 30vw, 195px)}
+  #home #hero-title {width: 60%}
+  #home #hero-title > span {display: block}
+  #home .station-dial {right: auto; top: 40px; left: var(--margin); width: 40px; translate: none}
+  #home .hero-intro {position: relative}
+}
+@media print {#home .mechanic-layer {display: none}}
